@@ -1,0 +1,111 @@
+<html>
+<head>
+<style>
+#avatar, #inside_avatar{
+	width: 100px;
+	height: 100px;
+	top: 100px;
+	left: 300px;
+	position: absolute;
+}
+</style>
+<script type="text/javascript">
+
+function move(){
+document.getElementById("avatar").innerHTML="Hello There";
+document.write(Date()); //will overwrite everything
+console.log("This got erased.");
+}
+
+function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+  
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+	console.log(xPosition);
+	console.log(yPosition);
+    return { x: xPosition, y: yPosition };
+}
+
+function test2(a,b){
+	return a+b;
+}
+
+//var player=document.getElementById("avatar").style;
+//console.log(player.style);
+
+function changePosition(element){
+	var x=0;
+	//alert(getPosition(element).x + " AND " + getPosition(element).y);
+	while(x<4){
+		element.style.top=getPosition(element).y + 1;
+		console.log(element.style.top);
+		//return element.style.top;
+	
+		if((getPosition(element).y+1)==162){
+			//alert("fiery poops");
+		}
+		x++;
+	}
+	
+}
+
+function changePosition2(element){
+	var x=0;
+	//alert(getPosition(element).x + " AND " + getPosition(element).y);
+	while(x<4){
+		element.style.top=getPosition(element).y - 1;
+		console.log(element.style.top);
+		//return element.style.top;
+	
+		if((getPosition(element).y+1)==162){
+			//alert("fiery poops");
+		}
+		x++;
+	}
+	
+}
+
+function changePosition3(element){
+	var k=0;
+	//alert(getPosition(element).x + " AND " + getPosition(element).y);
+	
+		while(k<4){
+		
+			element.style.left=getPosition(element).x + 1;
+			console.log(element.style.left);
+			//return element.style.top;
+		
+			if((getPosition(element).y+1)==162){
+				//alert("fiery poops");
+			}
+			
+			k++;
+		}
+	
+}
+
+function pickUp(element){
+	alert("You picked up a mushroom!");
+}
+
+</script>
+</head>
+<body>
+
+HELLO WORLD<p>
+<div id="avatar"><img src="pikachu.png" id="inside_avatar"></div>
+<!--
+<input type="button" onClick="getPosition(document.getElementById('avatar'))" value="Click Me">
+-->
+
+<input type="button" onClick="changePosition(document.getElementById('avatar'))" value="MOVE DOWN"><br>
+<input type="button" onClick="changePosition2(document.getElementById('avatar'))" value="MOVE UP"><br>
+<input type="button" onClick="changePosition3(document.getElementById('avatar'))" value="MOVE RIGHT">
+
+</body>
+</html>
