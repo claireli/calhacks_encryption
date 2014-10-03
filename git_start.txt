@@ -1,0 +1,6 @@
+Step 1. Get SSH key set up if you're using the shell
+Step 2. clone repo
+Step 3. create a .txt file, commit, then push, just to make sure everythang is working
+Step 4. we're ready to goooo
+
+#azndreamteam
