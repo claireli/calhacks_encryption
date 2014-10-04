@@ -1,0 +1,1449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://www.yeahbutisitflash.com/?p=5226 -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" social-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>Building a Parallax Scroller with Pixi.js: Part 1</title>
+
+
+	<link rel="stylesheet" href="./Building a Parallax Scroller with Pixi.js  Part 1_files/style.css" type="text/css" media="screen">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.yeahbutisitflash.com/?feed=rss2">
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://www.yeahbutisitflash.com/?feed=rss">
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://www.yeahbutisitflash.com/?feed=atom">
+	<link rel="pingback" href="http://www.yeahbutisitflash.com/xmlrpc.php">
+
+
+<!--[if lte IE 7]> <link href="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/ie.css" rel="stylesheet" type="text/css" /> <![endif]-->
+		<link rel="archives" title="September 2014" href="http://www.yeahbutisitflash.com/?m=201409">
+	<link rel="archives" title="August 2014" href="http://www.yeahbutisitflash.com/?m=201408">
+	<link rel="archives" title="July 2014" href="http://www.yeahbutisitflash.com/?m=201407">
+	<link rel="archives" title="June 2014" href="http://www.yeahbutisitflash.com/?m=201406">
+	<link rel="archives" title="May 2014" href="http://www.yeahbutisitflash.com/?m=201405">
+	<link rel="archives" title="April 2014" href="http://www.yeahbutisitflash.com/?m=201404">
+	<link rel="archives" title="March 2014" href="http://www.yeahbutisitflash.com/?m=201403">
+	<link rel="archives" title="February 2014" href="http://www.yeahbutisitflash.com/?m=201402">
+	<link rel="archives" title="January 2014" href="http://www.yeahbutisitflash.com/?m=201401">
+	<link rel="archives" title="December 2013" href="http://www.yeahbutisitflash.com/?m=201312">
+	<link rel="archives" title="November 2013" href="http://www.yeahbutisitflash.com/?m=201311">
+	<link rel="archives" title="October 2013" href="http://www.yeahbutisitflash.com/?m=201310">
+	<link rel="archives" title="September 2013" href="http://www.yeahbutisitflash.com/?m=201309">
+	<link rel="archives" title="August 2013" href="http://www.yeahbutisitflash.com/?m=201308">
+	<link rel="archives" title="July 2013" href="http://www.yeahbutisitflash.com/?m=201307">
+	<link rel="archives" title="June 2013" href="http://www.yeahbutisitflash.com/?m=201306">
+	<link rel="archives" title="May 2013" href="http://www.yeahbutisitflash.com/?m=201305">
+	<link rel="archives" title="April 2013" href="http://www.yeahbutisitflash.com/?m=201304">
+	<link rel="archives" title="March 2013" href="http://www.yeahbutisitflash.com/?m=201303">
+	<link rel="archives" title="February 2013" href="http://www.yeahbutisitflash.com/?m=201302">
+	<link rel="archives" title="January 2013" href="http://www.yeahbutisitflash.com/?m=201301">
+	<link rel="archives" title="December 2012" href="http://www.yeahbutisitflash.com/?m=201212">
+	<link rel="archives" title="November 2012" href="http://www.yeahbutisitflash.com/?m=201211">
+	<link rel="archives" title="October 2012" href="http://www.yeahbutisitflash.com/?m=201210">
+	<link rel="archives" title="September 2012" href="http://www.yeahbutisitflash.com/?m=201209">
+	<link rel="archives" title="August 2012" href="http://www.yeahbutisitflash.com/?m=201208">
+	<link rel="archives" title="July 2012" href="http://www.yeahbutisitflash.com/?m=201207">
+	<link rel="archives" title="June 2012" href="http://www.yeahbutisitflash.com/?m=201206">
+	<link rel="archives" title="May 2012" href="http://www.yeahbutisitflash.com/?m=201205">
+	<link rel="archives" title="April 2012" href="http://www.yeahbutisitflash.com/?m=201204">
+	<link rel="archives" title="March 2012" href="http://www.yeahbutisitflash.com/?m=201203">
+	<link rel="archives" title="February 2012" href="http://www.yeahbutisitflash.com/?m=201202">
+	<link rel="archives" title="January 2012" href="http://www.yeahbutisitflash.com/?m=201201">
+	<link rel="archives" title="December 2011" href="http://www.yeahbutisitflash.com/?m=201112">
+	<link rel="archives" title="November 2011" href="http://www.yeahbutisitflash.com/?m=201111">
+	<link rel="archives" title="October 2011" href="http://www.yeahbutisitflash.com/?m=201110">
+	<link rel="archives" title="September 2011" href="http://www.yeahbutisitflash.com/?m=201109">
+	<link rel="archives" title="August 2011" href="http://www.yeahbutisitflash.com/?m=201108">
+	<link rel="archives" title="July 2011" href="http://www.yeahbutisitflash.com/?m=201107">
+	<link rel="archives" title="June 2011" href="http://www.yeahbutisitflash.com/?m=201106">
+	<link rel="archives" title="May 2011" href="http://www.yeahbutisitflash.com/?m=201105">
+	<link rel="archives" title="April 2011" href="http://www.yeahbutisitflash.com/?m=201104">
+	<link rel="archives" title="March 2011" href="http://www.yeahbutisitflash.com/?m=201103">
+	<link rel="archives" title="February 2011" href="http://www.yeahbutisitflash.com/?m=201102">
+	<link rel="archives" title="January 2011" href="http://www.yeahbutisitflash.com/?m=201101">
+	<link rel="archives" title="December 2010" href="http://www.yeahbutisitflash.com/?m=201012">
+	<link rel="archives" title="November 2010" href="http://www.yeahbutisitflash.com/?m=201011">
+	<link rel="archives" title="October 2010" href="http://www.yeahbutisitflash.com/?m=201010">
+	<link rel="archives" title="September 2010" href="http://www.yeahbutisitflash.com/?m=201009">
+	<link rel="archives" title="August 2010" href="http://www.yeahbutisitflash.com/?m=201008">
+	<link rel="archives" title="July 2010" href="http://www.yeahbutisitflash.com/?m=201007">
+	<link rel="archives" title="June 2010" href="http://www.yeahbutisitflash.com/?m=201006">
+	<link rel="archives" title="May 2010" href="http://www.yeahbutisitflash.com/?m=201005">
+	<link rel="archives" title="April 2010" href="http://www.yeahbutisitflash.com/?m=201004">
+	<link rel="archives" title="March 2010" href="http://www.yeahbutisitflash.com/?m=201003">
+	<link rel="archives" title="February 2010" href="http://www.yeahbutisitflash.com/?m=201002">
+	<link rel="archives" title="January 2010" href="http://www.yeahbutisitflash.com/?m=201001">
+	<link rel="archives" title="December 2009" href="http://www.yeahbutisitflash.com/?m=200912">
+	
+            <script id="twitter-wjs" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/widgets.js"></script><script type="text/javascript" async="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/ga.js"></script><script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-17254615-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Yeah, But Is It Flash? » Building a Parallax Scroller with Pixi.js: Part 1 Comments Feed" href="http://www.yeahbutisitflash.com/?feed=rss2&p=5226">
+<link rel="stylesheet" id="contact-form-7-css" href="./Building a Parallax Scroller with Pixi.js  Part 1_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="social_comments-css" href="./Building a Parallax Scroller with Pixi.js  Part 1_files/comments.css" type="text/css" media="screen">
+<script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/jquery.js"></script>
+<script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/swfobject.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	(function(){
+		try {
+			// Disabling SWFObject's Autohide feature
+			if (typeof swfobject.switchOffAutoHideShow === "function") {
+				swfobject.switchOffAutoHideShow();
+			}
+		} catch(e) {}
+	})();
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.yeahbutisitflash.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.yeahbutisitflash.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="10 Steps to Learning ANE iOS Development" href="http://www.yeahbutisitflash.com/?p=5540">
+<link rel="next" title="AIR Mobile Games Showcase #1" href="http://www.yeahbutisitflash.com/?p=5632">
+<meta name="generator" content="WordPress 3.7.4">
+<link rel="canonical" href="./Building a Parallax Scroller with Pixi.js  Part 1_files/Building a Parallax Scroller with Pixi.js  Part 1.htm">
+<link rel="shortlink" href="./Building a Parallax Scroller with Pixi.js  Part 1_files/Building a Parallax Scroller with Pixi.js  Part 1.htm">
+
+<script type="text/javascript">
+	function addHandler(object, event, handler) {
+		if (typeof object.addEventListener != 'undefined') 
+			object.addEventListener(event, handler, false);
+		else
+			if (typeof object.attachEvent != 'undefined')
+				object.attachEvent('on' + event, handler);
+			else 
+				throw 'Incompatible browser';
+	}
+</script>
+</head>
+<body data-twttr-rendered="true">
+<div id="body2">
+
+<div id="menulinks">
+		<ul id="navlist">
+			<li><a href="http://www.yeahbutisitflash.com/">Home</a></li>
+			<li class="page_item page-item-2"><a href="http://www.yeahbutisitflash.com/?page_id=2">About Me</a></li>
+<li class="page_item page-item-3371"><a href="http://www.yeahbutisitflash.com/?page_id=3371">Flash iOS Apps Cookbook</a></li>
+		</ul>
+		<!--<div id="rsslink"><a href="feed:http://www.yeahbutisitflash.com/?feed=rss2">RSS</a></div>-->
+		<div id="rsslink"><a href="http://www.yeahbutisitflash.com/?feed=rss2">RSS</a></div>
+</div>
+
+
+<div id="header">
+  <div class="headleft">
+	<h1><a href="http://www.yeahbutisitflash.com/">Yeah, But Is It Flash?</a></h1>
+	<div class="description">Flash, HTML5, mobile, and stuff like that</div>
+  </div>
+  <!--<div class="headright"><a rel="nofollow" href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/ad.gif" border="0" title="insert title" alt="insert title" /></a>
+  </div>-->
+
+</div>
+
+<div id="page">
+<div id="mainarea">
+<div id="contentarea">
+
+   		
+						
+			<div class="post">
+			
+				<div class="posttop">
+					<div class="dateicon">
+						<div class="day">20</div> 
+						<div class="month">Oct</div>
+					</div>
+					<div class="title">
+						<div class="thetitle"><a href="./Building a Parallax Scroller with Pixi.js  Part 1_files/Building a Parallax Scroller with Pixi.js  Part 1.htm" rel="bookmark" title="Permanent Link to Building a Parallax Scroller with Pixi.js: Part 1">Building a Parallax Scroller with Pixi.js: Part 1</a></div>
+						<div class="under">stored in: <a href="http://www.yeahbutisitflash.com/?cat=161" title="View all posts in HTML5" rel="category">HTML5</a>, <a href="http://www.yeahbutisitflash.com/?cat=48" title="View all posts in Tutorials" rel="category">Tutorials</a> and tagged: <a href="http://www.yeahbutisitflash.com/?tag=javascript" rel="tag">javascript</a>, <a href="http://www.yeahbutisitflash.com/?tag=pixi-js" rel="tag">pixi.js</a>, <a href="http://www.yeahbutisitflash.com/?tag=tutorial" rel="tag">tutorial</a></div>
+					</div>
+				</div>
+			
+				<div class="entry">
+					<div style="float: right; margin-left: 10px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/tweet_button.9f6db03124fbcdefe0afe3b33d4ff07f.en.htm" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 108px; height: 20px;"></iframe></div>
+<p>Ever played endless runner games such as <a href="http://www.adamatomic.com/canabalt/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.adamatomic.com&#39;]);" target="_blank">Canabalt</a> and <a href="https://chrome.google.com/webstore/detail/monster-dash/cknghehebaconkajgiobncfleofebcog?hl=en" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://chrome.google.com&#39;]);" target="_blank">Monster Dash</a>, and wondered how to build their scrolling game maps? In this tutorial we’ll take our first steps towards building a similar parallax scroller using JavaScript and the <a href="http://www.pixijs.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.pixijs.com&#39;]);" target="_">pixi.js 2D rendering engine</a>.</p>
+<h3>What you will learn…</h3>
+<ul>
+<li>The fundamentals of pixi.js</li>
+<li>How to work with textures and tiling sprites</li>
+<li>How to implement simple parallax scrolling</li>
+</ul>
+<h3>What you should know…</h3>
+<ul>
+<li>A basic understanding of JavaScript or ActionScript</li>
+</ul>
+<p>JavaScript is everywhere. Thanks to ever increasing browser maturity and the plethora of JavaScript libraries that are out there we’re really starting to see HTML5 games development flourish. But with so many libraries available, part of the challenge has become picking the right ones to work with.</p>
+<p>This series of tutorials will introduce you to the basics of JavaScript games development and focus on pixi.js. Pixi.js is a new 2D rendering framework which supports both WebGL and HTML5 Canvas. By the end you will have built the following horizontal parallax scrolling game map:</p>
+<div align="center"><a target="_" href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/final/index.html"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/ps-tut1-screenshot1.png" style="border: 1px solid black" alt="" title="ps-tut1-screenshot1" width="512" height="384" class="aligncenter size-full wp-image-5602"></a></div>
+<p>Clicking on the image above will launch and run the final version of the scrolling map that you will be working towards. Notice that it contains three parallax layers: a far layer, a mid layer, and a foreground layer. In this first tutorial we’ll implement some basic parallax scrolling by concentrating on just the far and mid layers. And of course, to do that we’ll cover the basics of pixi.js. Also, if you’re new to JavaScript then you should find that this is a good place to start learning the basics of HTML5 games programming. </p>
+<div align="center"><a target="_" href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/index.html"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/ps-tut1-screenshot2.png" style="border: 1px solid black" alt="" title="ps-tut1-screenshot2" width="512" height="384" class="aligncenter size-full wp-image-5604"></a></div>
+<p>Before we proceed, click on the image above to see a running demonstration of what you’ll actually build during this tutorial. You can also <a href="http://github.com/ccaleb/pixi-parallax-scroller" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);" target="_blank">download this tutorial’s source code</a> from GitHub.</p>
+<p><span id="more-5226"></span></p>
+<h2 id="getting_started">Getting Started</h2>
+<p>For development you’ll need a suitable code editor or IDE. I’ll be using Sublime Text 2, a trial version of which can be downloaded from <a href="http://www.sublimetext.com/2" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.sublimetext.com&#39;]);" target="_blank">www.sublimetext.com/2</a>.</p>
+<p>You’ll also need a web browser to test your work. Any modern browser should do but I’ll be using Google Chrome and covering some of its developer tools during the course of these tutorials. If you don’t have Chrome installed then get it from <a href="http://www.google.com/chrome" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.google.com&#39;]);" target="_blank">www.google.com/chrome</a>.</p>
+<p>To test your work, you’ll need to run a local web server on your development computer. Microsoft Windows users can set-up IIS: <a href="http://www.yeahbutisitflash.com/www.howtogeek.com/howto/windows-vista/how-to-install-iis-on-windows-vista" target="_blank">www.howtogeek.com/howto/windows-vista/how-to-install-iis-on-windows-vista</a>, while Mac OS X users can configure and run the built-in Apache web server: <a href="http://macdevcenter.com/pub/a/mac/2001/12/07/apache.html" target="_blank">http://macdevcenter.com/pub/a/mac/2001/12/07/apache.html</a>. If you have OS X Mountain Lion installed then setting up your web server is a little less straightforward than it used to be. Check out <a href="http://reviews.cnet.com/8301-13727_7-57481978-263/how-to-enable-web-sharing-in-os-x-mountain-lion/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://reviews.cnet.com&#39;]);" target="_blank">this resource</a> to get Apache up and running on Mountain Lion.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">If you have a web hosting package then you can simply upload your files and test them from there rather than setting up a local web sever. Alternatively if you have a <a href="https://www.dropbox.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.dropbox.com&#39;]);" target="_blank">Dropbox</a> account you can host the files there via a service like <a href="http://droppages.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://droppages.com&#39;]);" target="_blank">DropPages</a>.</div>
+<p>Once your web server is set up, create a new folder within its root and name it <strong><code>parallax-scroller</code></strong>. If you’re using Windows then the path to your web server’s root folder will be <strong><code>C:\inetpub\parallax-scroller</code></strong>. If you’re using OS X then the path to your personal web folder will be <strong><code>/Users/your_user_name/Sites</code></strong>. Remember to replace <strong><code>your_user_name</code></strong> with your actual username.</p>
+<p>Since we’ll be working with pixi.js in this tutorial you’ll need to download it. Pixi.js is hosted on GitHub and can be found at <a href="https://github.com/GoodBoyDigital/pixi.js" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://github.com/GoodBoyDigital/pixi.js&#39;]);" target="_blank">https://github.com/GoodBoyDigital/pixi.js</a>. Simply click the <strong>Download ZIP</strong> button near the bottom-right corner of the screen to commence the download. Once downloaded, copy and extract pixi.js to your <strong><code>parallax-scroller</code></strong> folder.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">Within the <strong><code>pixi.js-master</code></strong> folder is a sub-folder named <code>bin</code>. It contains two JavaScript files: <code><strong>pixi.js</strong></code> and <code><strong>pixi.dev.js</strong></code>. Both files represent the pixi.js rendering framework. The first represents the production version of pixi.js which you should use once you are ready to release your game to the world. The second is designed to help during development and provides better error reporting at the cost of performance. We’ll be using <code><strong>pixi.dev.js</strong></code> throughout this and future tutorials.</div>
+<p>Finally, we’ll be working with a couple of graphics assets during the course of this tutorial. Rather than have you create your own, I’ve provided a zip file at <a href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources.zip&#39;]);" target="_blank">www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources.zip</a>. Download this file and extract it within your <strong><code>parallax-scroller</code></strong> folder.</p>
+<p>Here’s how your <strong><code>parallax-scroller</code></strong> folder should now look on Windows:</p>
+<p><a href="./Building a Parallax Scroller with Pixi.js  Part 1_files/screenshot3.png"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/screenshot3.png" alt="" title="screenshot3" width="560" height="187" class="aligncenter size-full wp-image-5457"></a></p>
+<p>and if you’re a Mac OS X user then your folder structure should look like this:</p>
+<p><a href="./Building a Parallax Scroller with Pixi.js  Part 1_files/screenshot4.png"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/screenshot4.png" alt="" title="screenshot4" width="560" height="206" class="aligncenter size-full wp-image-5458"></a></p>
+<p>Now we’re ready to begin coding. Launch Sublime Text 2 or your own favourite code editor.</p>
+<h2>Setting up the Canvas</h2>
+<p>Every pixi.js project starts from an HTML file. From here we’ll create an HTML5 Canvas element and also include the pixi.js library. The canvas element represents the area on the HTML page where our scroller will be rendered.</p>
+<p>Create a new file within Sublime Text 2 by selecting <strong>File | New File</strong> from the drop-down menu. Now before we start, select <strong>File | Save As…</strong> and save it within the root of your <code>parallax-scroller</code> folder as <strong><code>index.html</code></strong>.</p>
+<p>Okay, let’s start with a minimal HTML page. Add the following to your <code>index.html</code> file:</p>
+<blockquote>
+<pre><code><strong style="color:#333333">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Parallax Scrolling Demo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</strong>
+</code></pre>
+</blockquote>
+<p>It’s all fairly straight forward at the moment. We have a basic HTML page with a <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> element.</p>
+<p>Now let’s add our HTML5 Canvas element to the page. Simply add the following lines between the <code>&lt;body&gt;</code> element and then save your file:</p>
+<blockquote>
+<pre><code>&lt;body&gt;
+  <strong style="color:#333333">&lt;div align="center"&gt;
+    &lt;canvas id="game-canvas" width="512" height="384"&gt;&lt;/canvas&gt;
+  &lt;/div&gt;</strong>
+&lt;/body&gt;
+</code></pre>
+</blockquote>
+<p>We’ve specified a canvas that’s 512 pixels wide and 384 pixels tall. It’s this region that the pixi.js library will render our game’s visuals into. Notice also that we assigned an ID to our canvas and named it <code>game-canvas</code>. This will let us easily access this particular canvas element, which is required when initialising pixi.js.</p>
+<p>Now go ahead and load your <code>index.html</code> page into your web browser. If you’re using Windows then the URL to your HTML page will be <code>http://localhost/parallax-scroller/index.html</code> while for Mac OS X enter <code>http://localhost/~<strong>your_user_name</strong>/parallax-scroller/index.html</code> into your browser’s address bar.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">
+If you’re working from a Mac then remember to replace <strong>your_user_name</strong> with your actual username.</div>
+<p>If you go ahead and load <code>index.html</code> into your web browser you’ll notice that you can’t actually see the canvas region. That’s because it’s currently the exact same colour as the page. Let’s rectify that with a style sheet, which will specify different background colours for the page and its canvas. Add the following lines within your file’s <code>&lt;head&gt;</code> element:</p>
+<blockquote>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Endless Runner Game Demo&lt;/title&gt;
+    <strong style="color:#333333">&lt;style&gt;
+      body { background-color: #000000; }
+      canvas { background-color: #222222; }
+    &lt;/style&gt;</strong>
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</blockquote>
+<p>Save the current version of <code>index.html</code> and refresh your browser. This time you should clearly see your canvas region: it will appear grey on top of a black page and will sit in the horizontal centre of the page.</p>
+<h2>Including the pixi.js JavaScript library</h2>
+<p>Now that our canvas is set up, let’s include the pixi.js library. Simply add the following line near the end of the page’s body:</p>
+<blockquote>
+<pre><code>&lt;body&gt;
+  &lt;div align="center"&gt;
+    &lt;canvas id="game-canvas" width="512" height="384"&gt;&lt;/canvas&gt;
+  &lt;/div&gt;
+  <strong style="color:#333333">&lt;script src="pixi.js-master/bin/pixi.dev.js"&gt;&lt;/script&gt;</strong>
+&lt;/body&gt;
+</code></pre>
+</blockquote>
+<p>Notice that we used a relative path to specify the pixi.js library file which you previously downloaded and copied to your project.</p>
+<p>Save what we have and let’s check that everything runs as expected within Chrome. Chrome’s <strong>Developer Tools</strong> can come in handy here. Simply press <strong>F12</strong> (<strong>Cmd + Opt + i</strong> on Mac) to open the Developer Tools window then click the <strong>Console</strong> tab to open its JavaScript Console window.</p>
+<p>For example, if Chrome was unable to load the pixi.js library due to a mistyped path in your page then you’d see an error similar to this within the console window:</p>
+<p><code>x GET file:///Users/ccaleb/Documents/javascript/tutorial/part1/parallax-scroller/pixi.js-master/bin/pixie.js  index.html:14</code></p>
+<p>Chrome’s developer tools are essential when trying to debug your own JavaScript or finding errors reported from pixi.js. You can even send text to it from within your own JavaScript code. Keep the console window open during development and if you have enough screen real estate then I suggest docking the Developer Tools window to the bottom of your browser window. You can do this by simply clicking on the <strong>Dock to main window</strong> icon at the bottom-left corner of the developer tools window.</p>
+<h2>Adding a Main Entry Point</h2>
+<p>When the contents of the HTML page have completely loaded, its <code>&lt;body&gt;</code> element will dispatch an <strong><code>onload</code></strong> event. At this point we can be sure that our canvas has been initialised and that the pixi.js library has been fully loaded. We can trigger JavaScript of our choosing in response to this event and start working directly with pixi.js. Let’s do this by calling a function named <code>init()</code> when the <code>onload</code> event is triggered:</p>
+<blockquote>
+<pre><code>&lt;body <strong style="color:#333333">onload="init();"</strong>&gt;
+  &lt;div align="center"&gt;
+    &lt;canvas id="game-canvas" width="512" height="384"&gt;&lt;/canvas&gt;
+  &lt;/div&gt;
+  &lt;script src="pixi.js-master/bin/pixi.dev.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+</blockquote>
+<p>Now we need to write the actual <code>init()</code> function. Place the function at the bottom of the <code>&lt;body&gt;</code> element and within it simply output some text to the JavaScript console to satisfy yourself that the page’s <code>onload</code> event has been successfully captured:</p>
+<blockquote>
+<pre><code>&lt;body onload="init();"&gt;
+  &lt;div align="center"&gt;
+    &lt;canvas id="game-canvas" width="512" height="384"&gt;&lt;/canvas&gt;
+  &lt;/div&gt;
+  &lt;script src="pixi.js-master/bin/pixi.dev.js"&gt;&lt;/script&gt;
+  <strong style="color:#333333">&lt;script&gt;
+    function init() {
+      console.log("init() successfully called.");
+    }
+  &lt;/script&gt;</strong>
+&lt;/body&gt;
+</code></pre>
+</blockquote>
+<p>Save your <code>index.html</code> page and refresh your browser. If all is well then you should see the following message written to your JavaScript Console window:</p>
+<blockquote>
+<pre><code><strong style="color:#333333">&gt; init() successfully called.</strong>
+</code></pre>
+</blockquote>
+<p>While your <code>init()</code> function does very little at the moment it will eventually be responsible for initialising your scroller and kicking it off. Essentially everything will be run through this main entry point.</p>
+<h2>Initialising pixi.js</h2>
+<p>Now that we have an <code>init()</code> function to work from, let’s go ahead and initialise pixi.js. It’s a simple two step process:</p>
+<ul>
+<li>Create your stage</li>
+<li>Select and instantiate a renderer</li>
+</ul>
+<p>First we’ll create a stage object and then a renderer. If you’re a Flash developer then you’ll be familiar with the concept of a stage. Basically the stage represents all your game’s graphical content. The renderer on the other hand takes the stage and draws it to your HTML page’s canvas so that you work is actually visible to the user.</p>
+<p>Let’s create a stage instance and associated it with a global variable named <code>stage</code>. Also, while you’re at it, remove the log statement we added previously:</p>
+<blockquote>
+<pre><code>function init() {
+  <strong><strike style="color:#990000">console.log("init() successfully called.");</strike></strong>		
+  <strong style="color:#333333">stage = new PIXI.Stage(0x66FF99);</strong>
+}
+</code></pre>
+</blockquote>
+<p>The pixi.js API consists of several classes and functions which exist within the <code>PIXI</code> module. The <strong><code>PIXI.Stage</code></strong> class is used to create a stage and its constructor takes a single argument which specifies the stage’s background colour. We’ve opted for a lime green (0x66FF99) colour for our background. Notice that it doesn’t have to match the colour of your canvas’ background. In fact, we only set our canvas’ background colour earlier in this tutorial to let you actually see the canvas region you had just created.</p>
+<p>Now that we’ve created a stage we need to select a renderer. Pixi.js supports two renderers: WebGL and HTML5 Canvas. You can instantiate a renderer with <code>PIXI.WebGLRenderer</code> or the <code>PIXI.CanvasRenderer</code> class respectively. However it’s better to let Pixi interrogate the browser and automatically detect the correct renderer on your behalf. By default Pixi will attempt to use WebGL and will fall back to its canvas render if WebGL isn’t available. Let’s go ahead and let Pixi select the appropriate renderer using its <strong><code>PIXI.autoDetectRenderer()</code></strong> function:</p>
+<blockquote>
+<pre><code>function init() {		
+  stage = new PIXI.Stage(0x66FF99);
+  <strong style="color:#333333">renderer = PIXI.autoDetectRenderer(
+    512,
+    384,
+    document.getElementById("game-canvas")
+  );</strong>
+}
+</code></pre>
+</blockquote>
+<p>The <code>autoDetectRenderer()</code> function expects the width and height of the canvas that your stage is to be rendered to, plus a reference to the canvas itself. It returns either an instance of <code>PIXI.WebGLRenderer</code> or <code>PIXI.CanvasRenderer</code>, which we’ve stored in a global variable named <code>renderer</code>. Save your work.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">While we used hard coded values for the width and height we could just as easily obtain both directly from the canvas itself. Here’s how to obtain the width:<p></p>
+<blockquote>
+<pre><code><strong style="color:#333333">var width = document.getElementById("game-canvas").width;</strong></code></pre>
+</blockquote>
+</div>
+<h2>Rendering</h2>
+<p>Refresh your browser. You just set your stage’s background colour to lime green and obtained a renderer object. So why isn’t your browser showing a lime green canvas area? We’ll you’ve still to instruct your renderer to actually draw the stage’s content to the canvas. That’s done by calling your renderer’s <strong><code>render()</code></strong> method and passing it a reference to your stage. Let’s go ahead and do that:</p>
+<blockquote>
+<pre><code>function init() {		
+  stage = new PIXI.Stage(0x66FF99);
+  renderer = PIXI.autoDetectRenderer(
+    512,
+    384,
+    document.getElementById("game-canvas")
+  );
+  <strong style="color:#333333">renderer.render(stage);</strong>
+}
+</code></pre>
+</blockquote>
+<p>Save your changes and try refreshing your browser again. This time you’ll see your lime green canvas. In other words, the contents of your stage have been successfully rendered.</p>
+<h2>Adding Items to the Display List</h2>
+<p>Now that your stage is set up let’s go ahead and actually add some items to it. After all, we don’t want to be staring at a green background forever.</p>
+<p>Items are added to a tree-like structure known as the display list. Your stage acts as the root of that display list meaning everything added to your stage is rendered. There’s also a stacking order, meaning that some items will appear in-front of others depending on their designated depth index.</p>
+<p>There are several display object types that you can add to the display list. The most common is <strong><code>PIXI.Sprite</code></strong> which is used to add an image.</p>
+<p>Since this tutorial is all about creating a parallax scrolling background, let’s try adding an image that represents the farthest back layer. We’ll begin by adding a line of code to actually load the <code><a href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources/bg-far.png" target="_blank">bg-far.png</a></code> file that I provided within the <code>resources</code> folder:</p>
+<blockquote>
+<pre><code>function init() {		
+  stage = new PIXI.Stage(0x66FF99);
+  renderer = PIXI.autoDetectRenderer(
+    512,
+    384,
+    document.getElementById("game-canvas")
+  );
+
+  <strong style="color:#333333">var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");</strong>
+
+  renderer.render(stage);
+}
+</code></pre>
+</blockquote>
+<p>Images are loaded and stored as textures, which can then be attached to one or more sprites. In the line above we called the static <strong><code>PIXI.Texture.fromImage()</code></strong> method to create a <strong><code>PIXI.Texture</code></strong> instance and loaded our <code>bg-far.png</code> file into it. We assigned our texture to a local variable named <code>farTexture</code> for further use.</p>
+<p>Now let’s create a sprite and attach our texture to it. While we’re at it we’ll position the sprite at the top-left of the stage:</p>
+<blockquote>
+<pre><code>function init() {		
+  stage = new PIXI.Stage(0x66FF99);
+  renderer = PIXI.autoDetectRenderer(
+    512,
+    384,
+    document.getElementById("game-canvas")
+  );
+
+  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+<strong style="color:#333333">  far = new PIXI.Sprite(farTexture);
+  far.position.x = 0;
+  far.position.y = 0;</strong>
+
+  renderer.render(stage);
+}
+</code></pre>
+</blockquote>
+<p>The <strong><code>PIXI.Sprite</code></strong> class is used to create a sprite. Its constructor takes as its only parameter a reference to the texture that you wish the sprite to represent. We used a global variable named <code>far</code> and stored our newly created sprite instance within it.</p>
+<p>Also note how we used the <strong><code>position</code></strong> property to set the sprite’s x and y coordinates to the top-left of the stage. The stage’s coordinates run from left-to-right and top-to-bottom, meaning your stage’s top-left position is at (0,0) and the bottom right is at (512,384).</p>
+<p>Sprites have a pivot point, which they can be rotated around. The pivot point is also used when positioning (think of it as a handle) a sprite. A sprite’s default pivot point is set to its top-left corner. That’s why when positioning our sprite at the top-left corner of the stage, we set its position at (0,0).</p>
+<p>The final step is to actually add the sprite to the stage. That’s done using the <strong><code>addChild()</code></strong> method of the <code>PIXI.Stage</code> class. Go ahead and do that:</p>
+<blockquote>
+<pre><code>  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+  far = new PIXI.Sprite(farTexture);
+  far.position.x = 0;
+  far.position.y = 0;
+  <strong style="color:#333333">stage.addChild(far);</strong>
+
+  renderer.render(stage);
+}
+</code></pre>
+</blockquote>
+<p>Okay, save your work and refresh your browser. You should now see your background layer sitting snuggly at the top of the screen.</p>
+<p>It’s important to note that we created and added the sprite to the stage before we actually called <code>render()</code>. If we’d called <code>render()</code> before adding the sprite then we wouldn’t have actually seen our change.</p>
+<p>Now let’s go ahead and add our mid layer:</p>
+<blockquote>
+<pre><code>  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+  far = new PIXI.Sprite(farTexture);
+  far.position.x = 0;
+  far.position.y = 0;
+  stage.addChild(far);
+
+  <strong style="color:#333333">var midTexture = PIXI.Texture.fromImage("resources/bg-mid.png");
+  mid = new PIXI.Sprite(midTexture);
+  mid.position.x = 0;
+  mid.position.y = 128;
+  stage.addChild(mid);</strong>
+
+  renderer.render(stage);
+}
+</code></pre>
+</blockquote>
+<p>Once again, save your file and refresh your browser to see both layers. Because the mid layer was added to the stage second it gets placed at a higher depth than the background layer. Each call to <code>addChild()</code> adds its display object directly above the previous display object.</p>
+<p>Also notice that we positioned the mid layer’s sprite at a y-position of 128. Doing so forces the mid layer to sit lower on the stage than the farthest back layer.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">Remember, we’re only going to focus on the far and mid layers at the moment. In a future tutorial we’ll implement our more complex foreground layer.</div>
+<h2>Main Loop</h2>
+<p>Now that we have two background layers I suppose we could try implementing some parallax scrolling. For the avoidance of doubt let’s quickly clarify what exactly parallax scrolling actually is. It’s a scrolling technique used in video games where background graphics layers are moved across the screen slower than foreground layers. Doing so creates an illusion of depth in 2D games and provides an added sense of immersion for the player.</p>
+<p>Given this information we can apply it to our two sprite layers to produce a horizontal parallax scroller where we move our background layer across the screen slower than the mid layer. In order to scroll each layer we’re going to have to create a main loop where we can continually change the position of each. To achieve that we’ll employ the help of <strong><code>requestAnimFrame()</code></strong>, which is a JavaScript function that determines an optimal frame rate for your browser and then calls a specified function when your canvas/stage can next be redrawn.</p>
+<p>Go ahead and do that by first making a call to <code>requestAnimFrame()</code>:</p>
+<blockquote>
+<pre><code>  var midTexture = PIXI.Texture.fromImage("resources/bg-mid.png");
+  mid = new PIXI.Sprite(midTexture);
+  mid.position.x = 0;
+  mid.position.y = 128;
+  stage.addChild(mid);
+
+  renderer.render(stage);
+
+  <strong style="color:#333333">requestAnimFrame(update);</strong>
+}
+</code></pre>
+</blockquote>
+<p>The line you’ve just added states that you want to call a function named <strong><code>update()</code></strong> the next time your stage’s contents can be redrawn. If you make continuous successive calls to <code>requestAnimFrame()</code> then this will typically result in your <code>update()</code> function being called 60 times every second or what’s more commonly known as 60 frames-per-second (FPS). The <code>update()</code> function that we’ve specified will act as your main loop.</p>
+<p>We don’t yet have an <code>update()</code> function but before we write one, remove the following line of code since our main loop will soon take care of rendering:</p>
+<blockquote>
+<pre><code>  var midTexture = PIXI.Texture.fromImage("resources/bg-mid.png");
+  mid = new PIXI.Sprite(midTexture);
+  mid.position.x = 0;
+  mid.position.y = 128;
+  stage.addChild(mid);
+
+  <strong><strike style="color:#990000">renderer.render(stage);</strike></strong>
+
+  requestAnimFrame(update);
+}
+</code></pre>
+</blockquote>
+<p>Okay let’s write our main loop and have it change the position of both layers slightly and also render the stage’s content so we can see the difference on each frame redraw. Add your <code>update()</code> function directly after your <code>init()</code> function:</p>
+<blockquote>
+<pre><code><strong style="color:#333333">function update() {
+  far.position.x -= 0.128;
+  mid.position.x -= 0.64;
+
+  renderer.render(stage);
+
+  requestAnimFrame(update);
+}</strong>
+&lt;/script&gt;
+</code></pre>
+</blockquote>
+<p>The first two lines within <code>main()</code> update the x-position of our far and mid sprites. Notice that we move the far layer to the left by 0.128 pixels while we move the mid layer to the left by 0.64 pixels. To move something to the left we use a negative value while a positive value moves it to the right. Also notice that we moved our sprites by a fraction of a pixel. Pixi’s renderer can store and work with positions using sub-pixel values. This is ideal when you want to nudge things across the screen very slowly.</p>
+<p>At the end of our loop we once again call the <code>requestAnimFrame()</code> function to ensure that <code>update()</code> gets called when our canvas can next be drawn again. It’s this function that ensures our main loop is continuously called, which in turn ensures that our parallax layers are steadily moved across the screen.</p>
+<div align="center"><a href="./Building a Parallax Scroller with Pixi.js  Part 1_files/ps-tut1-screenshot5.png"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/ps-tut1-screenshot5.png" style="border: 1px solid black" alt="" title="ps-tut1-screenshot5" width="512" height="384" class="aligncenter size-full wp-image-5605"></a></div>
+<p>Save your work and refresh your browser to see how things are looking. You should see the mid layer moving faster than the far layer giving a sense of depth to your scene. However you should also spot a glaring issue with our current implementation: as each sprite moves out of the left-hand side of the screen it leaves a gap to the right. In other words, the graphics for both layers don’t wrap around to give the illusion of a continuous scrolling environment. Thankfully there’s a solution.</p>
+<h2>Using a TilingSprite</h2>
+<p>So far we’ve used the <code>PIXI.Sprite</code> class to represent objects within our display list. However pixi.js actually provides several other display objects to suit different needs.</p>
+<p>If you take a look at <code><a href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources/bg-far.png" target="_blank">bg-far.png</a></code> and <code><a href="http://www.yeahbutisitflash.com/pixi-parallax-scroller/tutorial-1/resources/bg-mid.png" target="_blank">bg-mid.png</a></code> then you should notice that both images are designed to repeat horizontally. Examine the left and right edge of each image. You should notice that the far-right edge perfectly leads back onto the far-left edge. In other words, both images are designed to wrap around.</p>
+<p>So rather than physically moving the position of our far and mid sprites, wouldn’t it be great if there was a way to simply shift each sprite’s texture to give the illusion that they were moving? Thankfully pixi.js provides the <strong><code>PIXI.TilingSprite</code></strong> class, which does just that.</p>
+<p>So let’s take advantage of tiling sprites by making some adjustments to our code. We’ll focus on the far layer first. Go ahead and remove the following line from your <code>setup()</code> function:</p>
+<blockquote>
+<pre><code>  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+  <strong><strike style="color:#990000">far = new PIXI.Sprite(farTexture);</strike></strong>
+  far.position.x = 0;
+  far.position.y = 0;
+  stage.addChild(far);
+}
+</code></pre>
+</blockquote>
+<p>and replace it with this:</p>
+<blockquote>
+<pre><code>  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+  <strong style="color:#333333">far = new PIXI.TilingSprite(farTexture, 512, 256);</strong>
+  far.position.x = 0;
+  far.position.y = 0;
+  stage.addChild(far);
+}
+</code></pre>
+</blockquote>
+<p>Staying within your <code>setup()</code> function, insert and set the following two properties:</p>
+<blockquote>
+<pre><code>  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
+  far = new PIXI.TilingSprite(farTexture, 512, 256);
+  far.position.x = 0;
+  far.position.y = 0;
+  <strong style="color:#333333">far.tilePosition.x = 0;
+  far.tilePosition.y = 0;</strong>
+  stage.addChild(far);
+}
+</code></pre>
+</blockquote>
+<p>Before we continue let’s discuss the <strong><code>TilingSprite</code></strong> class’ constructor and its <strong><code>tilePosition</code></strong> property.</p>
+<p>You’ll immediately notice that the <code>TilingSprite</code> class’ constructor expects 3 parameters compared to the <code>Sprite</code> class’ single parameter:</p>
+<blockquote>
+<pre><code>far = new PIXI.TilingSprite(farTexture, 512, 256);</code></pre>
+</blockquote>
+<p>Its first parameter is the same as before: a reference to the texture you wish to use. The second and third parameters expect the width and height of the tiling sprite respectively. Typically you’ll set these two parameters to the width and height of your texture, which in the case of <code>bg-far.png</code> is 512 x 256 pixels.</p>
+<div style="margin-left:10px; margin-right:10px; border:1px solid #666666; padding:5px;">While we’ve hard-coded the texture’s width and height, you can actually interrogate the texture to discover its dimensions. Here’s an alternative version of our code:<p></p>
+<blockquote>
+<pre><code>far = new PIXI.TilingSprite(
+  farTexture,
+  farTexture.baseTexture.width,
+  farTexture.baseTexture.height
+);</code></pre>
+</blockquote>
+</div>
+<p>We also took advantage of the tiling sprite’s <code>tilePosition</code> property, which  is used to offset the position of the sprite’s texture. In other words, by adjusting the offset you can shift the texture horizontally and/or vertically and have the texture wrap around to boot. Essentially you can simulate scrolling without physically changing the position of the sprite.</p>
+<p>We defaulted the sprite’s <code>tilePosition</code> property to (0,0) meaning that there’s initially no visible change in the far layer’s appearance:</p>
+<blockquote>
+<pre><code><strong style="color:#333333">far.tilePosition.x = 0;
+far.tilePosition.y = 0;</strong>
+</code></pre>
+</blockquote>
+<p>Now all that’s left to do is to simulate scrolling by continuously updating the horizontal offset of the sprite’s <code>tilePosition</code> property. To do that we’ll make a change to your <code>update()</code> function. Start by removing the following line:</p>
+<blockquote>
+<pre><code>function update() {
+  <strong><strike style="color:#990000">far.position.x -= 0.128;</strike></strong>
+  mid.position.x -= 0.64;
+
+  renderer.render(stage);
+
+  requestAnimFrame(update);
+}
+</code></pre>
+</blockquote>
+<p>and replace it with the following:</p>
+<blockquote>
+<pre><code>function update() {
+  <strong style="color:#333333">far.tilePosition.x -= 0.128;</strong>
+  mid.position.x -= 0.64;
+
+  renderer.render(stage);
+
+  requestAnimFrame(update);
+}
+</code></pre>
+</blockquote>
+<p>Now save <code>index.html</code> and once again refresh your browser. You’ll see that the far layer now seamlessly scrolls and repeats just as expected.</p>
+<p>Okay, let’s go ahead and make the same changes for the mid layer. Here’s how your <code>init()</code> function should look after you’ve made the changes:</p>
+<blockquote>
+<pre><code>function init() {
+  stage = new PIXI.Stage(0x66FF99);
+  renderer = new PIXI.autoDetectRenderer(
+    512,
+    384,
+    document.getElementById("game-canvas")
+  );
+
+  var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");	
+  far = new PIXI.TilingSprite(farTexture, 512, 256);
+  far.position.x = 0;
+  far.position.y = 0;
+  far.tilePosition.x = 0;
+  far.tilePosition.y = 0;
+  stage.addChild(far);
+
+  var midTexture = PIXI.Texture.fromImage("resources/bg-mid.png");
+  <strong style="color:#333333">mid = new PIXI.TilingSprite(midTexture, 512, 256);</strong>
+  mid.position.x = 0;
+  mid.position.y = 128;
+  <strong style="color:#333333">mid.tilePosition.x = 0;
+  mid.tilePosition.y = 0;</strong>
+  stage.addChild(mid);
+
+  requestAnimFrame(update);
+}
+</code></pre>
+</blockquote>
+<p>Now go ahead and make the following change to your <code>update()</code> function:</p>
+<blockquote>
+<pre><code>function update() {
+  far.tilePosition.x -= 0.128;
+  <strong style="color:#333333">mid.tilePosition.x -= 0.64;</strong>
+
+  renderer.render(stage);
+
+  requestAnimFrame(update);
+}
+</code></pre>
+</blockquote>
+<p>Save and test your code. This time you should see both layers perfectly scrolling while wrapping around both the screen’s left and right boundaries.</p>
+<h2>Conclusion</h2>
+<p>We’ve covered some of the basics of pixi.js and seen how <code>PIXI.TilingSprite</code> can be used to create layers that scroll infinitely. We’ve also seen how to use <code>addChild()</code> to stack tiling sprites together to produce convincing parallax scrolling.</p>
+<p>I encourage you to keep experimenting with Pixi and look at the documentation and code samples that come with it. Both are available within the <code>pixi</code> folder that you downloaded from GitHub. You can find the HTML documentation at <code>pixi.js-master/docs/index.html</code>, while the code samples can be found at <code>pixi.js-master/examples</code>.</p>
+<h2>Next Time</h2>
+<p>While we have a horizontal parallax scroller up and running, it’s still a little unsophisticated. Next time we’ll introduce the concept of a viewport and world positioning, both of which are important if you want to eventually add your scroller into a game. It will also put us in a good position for adding the foreground layer, which will represent a simple platform game map.</p>
+<p>Some valuable time will also be spent re-factoring our existing codebase. We’ll adopt a more object-oriented architecture and rid ourselves of our current dependency on global variables. By the end of the next tutorial all your scrolling functionality will be neatly contained within its own classes.</p>
+<p>I hope you found this introduction tutorial useful and I’ll hopefully see you next time for <a href="http://www.yeahbutisitflash.com/?p=5666">part two</a>.</p>
+					<div class="postbottom">
+						<a href="http://www.yeahbutisitflash.com/?p=5226#comments" class="commentslink" title="Comment on Building a Parallax Scroller with Pixi.js: Part 1">21 Comments</a>						<a href="http://stumbleupon.com/submit?url=http://www.yeahbutisitflash.com/?p=5226&title=Building%20a%20Parallax%20Scroller%20with%20Pixi.js:%20Part%201" class="stumbleupon"></a>
+						<a href="http://digg.com/submit?phase=2&url=http://www.yeahbutisitflash.com/?p=5226&title=Building%20a%20Parallax%20Scroller%20with%20Pixi.js:%20Part%201" class="digg"></a>
+						<a href="http://del.icio.us/post?url=http://www.yeahbutisitflash.com/?p=5226&title=Building%20a%20Parallax%20Scroller%20with%20Pixi.js:%20Part%201" class="delicious"></a>
+						<a href="http://google.com/bookmarks/mark?op=edit&bkmk=http://www.yeahbutisitflash.com/?p=5226&title=Building%20a%20Parallax%20Scroller%20with%20Pixi.js:%20Part%201" class="google"></a>
+					</div>
+				</div>
+				
+				<div id="social">
+		<div class="social-post">
+		<div id="loading" style="display:none">
+			<input type="hidden" id="reload_url" value="http://www.yeahbutisitflash.com/index.php?social_controller=auth&amp;social_action=reload_form&amp;redirect_to=http://www.yeahbutisitflash.com/?p=5226&amp;post_id=5226">
+			Logging In...		</div>
+										<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Profile <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.yeahbutisitflash.com/?p=5226#respond" style="display:none;">cancel</a></small></h3>
+									<form action="http://www.yeahbutisitflash.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+						<div class="social-sign-in-links social-clearfix">
+		<a class="social-twitter social-imr social-login comments" href="http://www.yeahbutisitflash.com/index.php?social_controller=auth&social_action=authorize&key=twitter&post_id=5226" id="twitter_signin" target="_blank">Sign in with Twitter</a>
+		<a class="social-facebook social-imr social-login comments" href="http://www.yeahbutisitflash.com/index.php?social_controller=auth&social_action=authorize&key=facebook&post_id=5226" id="facebook_signin" target="_blank">Sign in with Facebook</a>
+	</div>
+<div class="social-divider">
+	<span>or</span>
+</div>
+																				<p class="social-input-row social-input-row-author"><label for="author" class="social-label">Name</label><input id="author" name="author" class="social-input" required="required" type="text" value=""></p>
+<p class="social-input-row social-input-row-email"><label for="email" class="social-label">Email</label><input id="email" name="email" class="social-input" required="required" type="text" value=""><small class="social-help">Not published</small></p>
+<p class="social-input-row social-input-row-url"><label for="url" class="social-label">Website</label><input id="url" name="url" class="social-input" type="text" value=""></p>
+												<p class="social-input-row social-input-row-comment"><label for="comment" class="social-label">Comment</label><textarea id="comment" name="comment" class="social-input" required="required"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post It">
+							<input type="hidden" name="comment_post_ID" value="5226" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+<input type="hidden" id="use_twitter_reply" name="use_twitter_reply" value="0"><input type="hidden" id="in_reply_to_status_id" name="in_reply_to_status_id" value="">						<input type="hidden" name="plZyeEKG7lBF" id="plZyeEKG7lBF"></p>
+						<div id="commentform-extras"><noscript>&lt;strong&gt;&lt;u&gt;&lt;font color="red" size="5"&gt;To leave a comment please enable JavaScript in your browser settings!&lt;/font&gt;&lt;/u&gt;&lt;/strong&gt;</noscript></div>					</form>
+							</div><!-- #respond -->
+			        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('#commentform').submit(function () {
+                    _gaq.push(
+                            ['_setAccount', 'UA-17254615-1'],
+                            ['_trackEvent', 'comment', 'submit']
+                    );
+                });
+            });
+        </script>
+			</div>
+	<div id="social-tabs-comments">
+				<ul class="social-nav social-clearfix">
+			<li class="social-all social-tab-main social-current-tab"><a href="http://www.yeahbutisitflash.com/?p=5226#" rel="social-all"><span>21 Replies</span></a></li>
+			<li class="social-wordpress"><a href="http://www.yeahbutisitflash.com/?p=5226#" rel="wordpress"><span>19 Comments</span></a></li>
+			<li class="social-twitter"><a href="http://www.yeahbutisitflash.com/?p=5226#" rel="social-twitter"><span>2 Tweets</span></a></li>
+			<li class="social-facebook"><a href="http://www.yeahbutisitflash.com/?p=5226#" rel="social-facebook"><span>0 Facebook</span></a></li>
+			<li class="social-pingback"><a href="http://www.yeahbutisitflash.com/?p=5226#" rel="social-pingback"><span>0 Pingbacks</span></a></li>
+		</ul>
+
+		<!-- panel items -->
+		<div id="social-comments-tab-all" class="social-tabs-panel social-tabs-first-panel">
+			<div id="comments" class="social-comments">
+				<div class="social-last-reply-when">Last reply was 4 months ago</div><div class="cf-clearfix"></div>				<ol class="social-commentlist">
+				<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-135803">
+<div class="social-comment-inner social-clearfix" id="comment-135803">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/38a448dd9ebd890f2dbedb8817c6fb1c" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.georgehenryrowe.co.uk/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.georgehenryrowe.co.uk&#39;]);" rel="external nofollow" class="url">George Rowe</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-135803" class="social-posted-when" target="_blank">11 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Really clear and useful tutorial. Looking forward to the next installment!</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-135803 -->
+</li><!-- #comment-## -->
+<li class="wordpress odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-143121">
+<div class="social-comment-inner social-clearfix" id="comment-143121">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/e9e15c2ebc8139ed0330cdfad9c79d18" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Eduardo Penroz</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-143121" class="social-posted-when" target="_blank">10 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Excelent tutorial! Thanks for sharing the knowledge!</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-143121 -->
+</li><!-- #comment-## -->
+<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-151517">
+<div class="social-comment-inner social-clearfix" id="comment-151517">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/36ddb2ed6afc865ae3796b1f6df42fef" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Ken</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-151517" class="social-posted-when" target="_blank">8 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>I’m enjoying this tutorial and am following along to create my own parallax background.</p>
+<p>Everything works wonderfully until the point where your change the far and mid from Sprite to TilingSprite. When I execute my code I get the following WebGL error:</p>
+<p>Error: WebGL: A texture is going to be rendered as if it were black, as per the OpenGL ES 2.0.24 spec section 3.8.2, because it is a 2D texture, with a minification filter not requiring a mipmap, with its width or height not a power of two, and with a wrap mode different from CLAMP_TO_EDGE.</p>
+<p>I’m curious if anyone else has run into this when using their own image files?</p>
+<p>Details:<br>
+My canvas size is 800×480<br>
+My image files are .png format and are also 800×480</p>
+<p>These work in another game that I wrote in C# but I’m working to learn JavaScript, Canvas and PIXI now.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-151517 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-151532">
+<div class="social-comment-inner social-clearfix" id="comment-151532">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-151532" class="social-posted-when" target="_blank">8 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Ken,</p>
+<p>I’m not sure I mentioned in the tutorial, but GPUs work with textures that have dimensions that are a power of 2 (1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 are all powers of 2). It’s likely that’s what is causing the error you are seeing. Try changing the width and height of your PNGs to a size that’s a power of 2. So increasing your PNGs to 1024×512 in size should get things working.</p>
+<p>Let me know how you get on.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-151532 -->
+</li><!-- #comment-## -->
+<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-152858">
+<div class="social-comment-inner social-clearfix" id="comment-152858">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/36ddb2ed6afc865ae3796b1f6df42fef" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Ken</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-152858" class="social-posted-when" target="_blank">8 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thanks Christopher!<br>
+I altered my images to 1024×512 and everything works great.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-152858 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-152961">
+<div class="social-comment-inner social-clearfix" id="comment-152961">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-152961" class="social-posted-when" target="_blank">8 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Brilliant! That’s great news Ken.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-152961 -->
+</li><!-- #comment-## -->
+<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154397">
+<div class="social-comment-inner social-clearfix" id="comment-154397">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/2fc1f31d5bf3c4d385941dfc009eadfe" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Angus Pollock</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154397" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi, </p>
+<p>I’m working my way through the tutorial and I’m at the part where you add the far texture to the stage. It’s not displaying when I load the page, I’m just getting the lime green stage showing. </p>
+<p>Any ideas? No errors are being thrown and I’m definitely calling stage.addChild before I render. </p>
+<p>Thanks =)</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154397 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154399">
+<div class="social-comment-inner social-clearfix" id="comment-154399">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154399" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Angus. Could you zip up the current version of your code and stick it on Dropbox (or something similar) and send me a link. I’ll take a quick look and see if I can spot anything. Thanks.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154399 -->
+</li><!-- #comment-## -->
+<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154551">
+<div class="social-comment-inner social-clearfix" id="comment-154551">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/2fc1f31d5bf3c4d385941dfc009eadfe" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Angus Pollock</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154551" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Christopher,</p>
+<p>Thanks for the quick reply! Here’s a link to what I have so far. </p>
+<p><a href="https://www.dropbox.com/s/mv1m5748ketdzhb/pixie-scroller.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://www.dropbox.com/s/mv1m5748ketdzhb/pixie-scroller.zip&#39;]);" rel="nofollow">https://www.dropbox.com/s/mv1m5748ketdzhb/pixie-scroller.zip</a></p>
+<p>Thanks for your help!</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154551 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154570">
+<div class="social-comment-inner social-clearfix" id="comment-154570">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154570" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Angus,</p>
+<p>It looks like the texture isn’t being loaded in time before your call to render the stage. Not sure why the code at this point worked at my end and not yours. The quickest fix to get your code working is to add an update loop (which is explained shortly afterwards in the tutorial). For quickness, just add the following to get your code working:</p>
+<p>1. At the end of your init() function add the following line of code:</p>
+<p>requestAnimFrame(update);</p>
+<p>2. Then at the end of your file, add the following update() function:</p>
+<p>function update() {<br>
+    renderer.render(stage);</p>
+<p>    requestAnimFrame(update);<br>
+}</p>
+<p>This will force the rendering to take place repeatedly on each screen refresh and therefore show your texture once it has loaded into memory.</p>
+<p>Of course, this really a bit of a hack. A more appropriate approach would be to use the PIXI.AssetLoader class to load all your textures up-front and listen for the asset loader dispatching its onComplete event once all the textures are loaded. Once onComplete is triggered you can then safely start creating your sprites and adding them to the stage.</p>
+<p>However, for the purpose of the tutorial, the initial quick hack will work or simply complete the “Main Loop” steps in the tutorial and run it in the browser from that point onwards.</p>
+<p>Hope that was of some help.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154570 -->
+</li><!-- #comment-## -->
+<li class="wordpress even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154608">
+<div class="social-comment-inner social-clearfix" id="comment-154608">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/2fc1f31d5bf3c4d385941dfc009eadfe" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Angus Pollock</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154608" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Christopher </p>
+<p>Thanks so much for your help. I suspected that was probably what was going on. Great tutorial btw. So excited to start playing with Pixi!</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154608 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-154633">
+<div class="social-comment-inner social-clearfix" id="comment-154633">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-154633" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thanks Angus! Glad you’re enjoying the tutorial.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-154633 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-facebook_flyfy1 even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-155002">
+<div class="social-comment-inner social-clearfix" id="comment-155002">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/aa8812363ee015711b5aeb7ce0d74db2" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">facebook_flyfy1</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-155002" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi Christopher, thanks a lot for your tutorial and I’m really enjoying it.</p>
+<p>It seems that the current tutorial is not compatible with the latest code of Pixi.. esp. the async loading of the texture as Angus Pollock has mentioned. When I try to create TilingSprite based on the current code, the browser is producing error like “Uncaught TypeError: Cannot read property ‘width’ of undefined”. I believe it’s the problem that the texture is not loaded when creating TilingSprite, and I’m looking into solutions now.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-155002 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-facebook_flyfy1 odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-155007">
+<div class="social-comment-inner social-clearfix" id="comment-155007">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/aa8812363ee015711b5aeb7ce0d74db2" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">facebook_flyfy1</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-155007" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>I figured it out~~ using AssetLoader can solve the problem:</p>
+<p>        loader = new PIXI.AssetLoader(["resources/bg-far.png","resources/bg-mid.png"]);<br>
+        loader.onComplete = onAssetsLoaded<br>
+        loader.load();</p>
+<p>Then one can simply wrap the code into the onAssetsLoaded function <img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-155007 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-155047">
+<div class="social-comment-inner social-clearfix" id="comment-155047">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-155047" class="social-posted-when" target="_blank">7 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Hi thanks for the info. I’ll try and find the time to update the tutorial to include better handling of the texture loading.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-155047 -->
+</li><!-- #comment-## -->
+<li class="wordpress odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-163512">
+<div class="social-comment-inner social-clearfix" id="comment-163512">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/b6af90f7c0b48730134d479cf16ffe21" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn">Scott</cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-163512" class="social-posted-when" target="_blank">6 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thank you for this. Very concise and clear. Most helpful. Cheers!</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-163512 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-twitter_rkcpi even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-165330">
+<div class="social-comment-inner social-clearfix" id="comment-165330">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/48ea88cea7cf06a8017c07aa066779d5_normal.png" class="avatar avatar-40 photo wordpress" height="40" width="40"><cite class="social-fn fn"><a href="https://twitter.com/rkcpi" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;&#39;]);" rel="external nofollow" class="url">rkcpi</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-165330" class="social-posted-when" target="_blank">5 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>It seems there’s a small error in your post: in the “While we’ve hard-coded the texture’s width and height” section you used midtexture’s height and width properties to set the tiling sprite’s width and height. I think you meant to use the properties of farTexture here <img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-165330 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-wordpress" id="li-comment-165749">
+<div class="social-comment-inner social-clearfix" id="comment-165749">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-165749" class="social-posted-when" target="_blank">5 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thanks for spotting that rkcpi! I’ve made the change to the post.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-165749 -->
+</li><!-- #comment-## -->
+<li class="social-twitter byuser comment-author-twitter_padawanprogrmmr even thread-even depth-1 social-comment social-clearfix social-twitter" id="li-comment-169709">
+<div class="social-comment-inner social-clearfix" id="comment-169709">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/3rM3c3Z2_normal.jpeg" class="avatar avatar-40 photo social-twitter" height="40" width="40"><cite class="social-fn fn"><a href="https://twitter.com/padawanprogrmmr" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;&#39;]);" rel="external nofollow" class="url">padawanprogrmmr</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-twitter">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-169709" class="social-posted-when" target="_blank">4 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thanks for this tutorial. I’m moving through it but I’ve run into an issue:<br>
+GET <a href="http://localhost/~username/parallax-scroller/resources/bg-far.png" rel="nofollow">http://localhost/~username/parallax-scroller/resources/bg-far.png</a> 403 (Forbidden) </p>
+<p>This is what I see when I attempt to load the texture into the scene as a sprite. Any help is appreciated.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-169709 -->
+</li><!-- #comment-## -->
+<li class="social-twitter byuser comment-author-twitter_padawanprogrmmr odd alt thread-odd thread-alt depth-1 social-comment social-clearfix social-twitter" id="li-comment-169715">
+<div class="social-comment-inner social-clearfix" id="comment-169715">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/3rM3c3Z2_normal.jpeg" class="avatar avatar-40 photo social-twitter" height="40" width="40"><cite class="social-fn fn"><a href="https://twitter.com/padawanprogrmmr" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;&#39;]);" rel="external nofollow" class="url">padawanprogrmmr</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-twitter">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-169715" class="social-posted-when" target="_blank">4 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>I figured it out. Apparently apache requires permissions to be set for all folders, not just root. After updating the permissions on all my folders, it started working. Thanks again for the tutorial.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-169715 -->
+</li><!-- #comment-## -->
+<li class="wordpress byuser comment-author-admin bypostauthor even thread-even depth-1 social-comment social-clearfix social-wordpress" id="li-comment-169716">
+<div class="social-comment-inner social-clearfix" id="comment-169716">
+	<div class="social-comment-header">
+		<div class="social-comment-author vcard">
+			<img alt="" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/a04f6f6d31ed6c8b4a0637cb6f85e3ca" class="avatar avatar-40 photo" height="40" width="40"><cite class="social-fn fn"><a href="http://www.christophercaleb.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.christophercaleb.com&#39;]);" rel="external nofollow" class="url">Christopher</a></cite>		</div>
+		<!-- .comment-author .vcard -->
+		<div class="social-comment-meta social-comment-meta-wordpress">
+			<span class="social-posted-from">
+								<span>View</span>
+							</span>
+			<a href="http://www.yeahbutisitflash.com/?p=5226&cpage=1#comment-169716" class="social-posted-when" target="_blank">4 months ago</a>
+		</div>
+	</div>
+	<div class="social-comment-body">
+				<p>Thanks for the info padawanprogrammer, and I’m glad you enjoyed the tutorial.</p>
+	</div>
+			<div class="social-actions entry-meta">
+			</div>
+		<!-- .reply -->
+</div><!-- #comment-169716 -->
+</li><!-- #comment-## -->
+				</ol>
+							</div>
+		</div>
+			</div>
+	<!-- #Comments Tabs -->
+	</div>
+			</div>
+			
+				<rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:description rdf:about="http://www.yeahbutisitflash.com/?p=5226" dc:identifier="http://www.yeahbutisitflash.com/?p=5226" dc:title="Building a Parallax Scroller with Pixi.js: Part 1" trackback:ping="http://www.yeahbutisitflash.com/wp-trackback.php?p=5226">
+</rdf:description></rdf:rdf>
+						<div class="navigation">
+														</div>
+		
+</div> <!-- CONTENTAREA -->
+
+<div id="sidebar">
+
+		<!--<h2 style="margin-top:0;">Popular Articles</h2>
+		<ul id="widelist">
+		<li><a href="#">some sample link</a></li>
+		<li><a href="#">some sample link</a></li>
+		<li><a href="#">some sample link</a></li>
+		<li><a href="#">some sample link</a></li>
+		</ul>-->
+		
+		<h2>Search Blog</h2>
+		<form method="get" id="searchform" action="http://www.yeahbutisitflash.com/index.php">
+				<div><input type="text" value="" name="s" id="s">
+				<input type="submit" id="searchsubmit" value=" ">
+				</div>
+		</form>	
+		<br><br>
+		<h2 style="text-align:left;">Flash iOS Apps Cookbook</h2>
+		<div id="advertarea">
+			<div class="advert" style="width:270px; height:125px;"><a target="_" href="http://www.packtpub.com/flash-cs5-iphone-development-for-ios-applications-using-adobe-air-cookbook/book"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/cookbook.jpg" alt="advert1"></a><p style="font-size:9pt; line-height:140%; text-align:left; padding-top:4px; margin-top:0px;">Build your own apps, port existing projects, and learn the best practices for targeting iPhone, iPad, and iPod touch using Flash Professional.</p><a style="text-align:left; margin-left:0px;" target="_" href="http://www.packtpub.com/flash-cs5-iphone-development-for-ios-applications-using-adobe-air-cookbook/book">Buy the book</a>
+			</div>
+			<br><br>
+		</div>
+		<h2 style="text-align:left;">Match Mee</h2>
+		<div id="advertarea">
+			<div class="advert" style="width:270px; height:107px;"><a target="_" href="https://itunes.apple.com/us/app/match-mee/id543160386?mt=8"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/matchmee.png" alt="advert2"></a>
+			</div>
+			<div class="advert" style="width:270px;"><p style="margin-left:1px; text-align:center;">Download FREE on iPhone, iPod touch, &amp; iPad</p></div>
+			<!--<div style="width:270px; border:1px; border-color:black;"><p style="align:center;"><a target="_" href="https://itunes.apple.com/us/app/match-mee/id543160386?mt=8">Get it FREE for iPhone, iPod touch, and iPad</a></p></div>-->
+			<br><!--<br/>-->
+		</div>
+		<!--<h2>Flash iOS Apps Cookbook</h2>
+		<div id="advertarea">
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert4.jpg" alt="advert1" /></a></div>
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert2.jpg" alt="advert2" /></a></div>
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert3.jpg" alt="advert3" /></a></div>
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert1.jpg" alt="advert1" /></a></div>
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert2.jpg" alt="advert2" /></a></div>
+			<div class="advert"><a href="#"><img src="http://www.yeahbutisitflash.com/wp-content/themes/darkzen/images/advert3.jpg" alt="advert3" /></a></div>
+			<br/><br/>
+		</div>-->
+	
+
+	<div id="sidebar1">
+			<ul>
+			<li id="pages-3" class="widget widget_pages"><h2 class="widgettitle">Pages</h2>
+		<ul>
+			<li class="page_item page-item-2"><a href="http://www.yeahbutisitflash.com/?page_id=2">About Me</a></li>
+<li class="page_item page-item-3371"><a href="http://www.yeahbutisitflash.com/?page_id=3371">Flash iOS Apps Cookbook</a></li>
+		</ul>
+		</li>
+<!-- Start Subscribe Sidebar widget -->
+<li id="subscribe" class="widget widget_subscribe_sidebar"><h2 class="widgettitle">Follow Me</h2>
+<div id="subscribe_sidebar">	<ul id="subscribe_sidebar_list">
+		<li><a href="http://www.yeahbutisitflash.com/?feed=rss2" title="RSS Feed"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/feed.png" alt="RSS Feed"></a><a href="http://www.yeahbutisitflash.com/?feed=rss2" title="RSS Feed">RSS Feed</a></li>
+		<li><a href="http://twitter.com/chriscaleb" title="Twitter"><img src="./Building a Parallax Scroller with Pixi.js  Part 1_files/twitter.png" alt="Twitter"></a><a href="http://twitter.com/chriscaleb" title="Twitter">Twitter</a></li>
+	</ul>
+</div></li>
+	<!-- End Subscribe Sidebar widget -->
+<li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="http://www.yeahbutisitflash.com/?m=201409">September 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201408">August 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201407">July 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201406">June 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201405">May 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201404">April 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201403">March 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201402">February 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201401">January 2014</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201312">December 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201311">November 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201310">October 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201309">September 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201308">August 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201307">July 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201306">June 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201305">May 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201304">April 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201303">March 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201302">February 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201301">January 2013</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201212">December 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201211">November 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201210">October 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201209">September 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201208">August 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201207">July 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201206">June 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201205">May 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201204">April 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201203">March 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201202">February 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201201">January 2012</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201112">December 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201111">November 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201110">October 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201109">September 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201108">August 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201107">July 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201106">June 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201105">May 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201104">April 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201103">March 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201102">February 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201101">January 2011</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201012">December 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201011">November 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201010">October 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201009">September 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201008">August 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201007">July 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201006">June 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201005">May 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201004">April 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201003">March 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201002">February 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=201001">January 2010</a></li>
+	<li><a href="http://www.yeahbutisitflash.com/?m=200912">December 2009</a></li>
+		</ul>
+</li>
+<li id="meta-3" class="widget widget_meta"><h2 class="widgettitle">Meta</h2>
+			<ul>
+						<li><a href="http://www.yeahbutisitflash.com/wp-login.php" id="social_login">Log in</a></li>
+			<li><a href="http://www.yeahbutisitflash.com/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.yeahbutisitflash.com/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</li>
+			</ul>
+	</div>
+	
+	<div id="sidebar2">
+			<ul>
+							
+				
+				<li><h2>Categories</h2>
+					<ul>	<li class="cat-item cat-item-40"><a href="http://www.yeahbutisitflash.com/?cat=40" title="View all posts filed under AIR">AIR</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.yeahbutisitflash.com/?cat=146" title="View all posts filed under Competition">Competition</a>
+</li>
+	<li class="cat-item cat-item-54"><a href="http://www.yeahbutisitflash.com/?cat=54" title="View all posts filed under DDD Scotland">DDD Scotland</a>
+</li>
+	<li class="cat-item cat-item-64"><a href="http://www.yeahbutisitflash.com/?cat=64" title="View all posts filed under Events">Events</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.yeahbutisitflash.com/?cat=6" title="All things Flash related.">Flash</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.yeahbutisitflash.com/?cat=5" title="View all posts filed under Flash CS5">Flash CS5</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.yeahbutisitflash.com/?cat=118" title="View all posts filed under Flash CS5.5.">Flash CS5.5.</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.yeahbutisitflash.com/?cat=125" title="View all posts filed under Flash iOS Apps Cookbook">Flash iOS Apps Cookbook</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.yeahbutisitflash.com/?cat=12" title="View all posts filed under Flash Lite">Flash Lite</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.yeahbutisitflash.com/?cat=27" title="View all posts filed under Flash Mobile">Flash Mobile</a>
+</li>
+	<li class="cat-item cat-item-50"><a href="http://www.yeahbutisitflash.com/?cat=50" title="View all posts filed under Flash Player 10.1">Flash Player 10.1</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.yeahbutisitflash.com/?cat=97" title="View all posts filed under Flash Player 10.2">Flash Player 10.2</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://www.yeahbutisitflash.com/?cat=22" title="View all posts filed under GamesFlash">GamesFlash</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.yeahbutisitflash.com/?cat=1" title="View all posts filed under General">General</a>
+</li>
+	<li class="cat-item cat-item-161"><a href="http://www.yeahbutisitflash.com/?cat=161" title="View all posts filed under HTML5">HTML5</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.yeahbutisitflash.com/?cat=96" title="View all posts filed under iOS">iOS</a>
+</li>
+	<li class="cat-item cat-item-167"><a href="http://www.yeahbutisitflash.com/?cat=167" title="View all posts filed under Match Mee">Match Mee</a>
+</li>
+	<li class="cat-item cat-item-156"><a href="http://www.yeahbutisitflash.com/?cat=156" title="View all posts filed under Native Extensions">Native Extensions</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.yeahbutisitflash.com/?cat=19" title="My personal projects.">Projects</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.yeahbutisitflash.com/?cat=153" title="View all posts filed under Stage3D">Stage3D</a>
+</li>
+	<li class="cat-item cat-item-86"><a href="http://www.yeahbutisitflash.com/?cat=86" title="View all posts filed under Tips">Tips</a>
+</li>
+	<li class="cat-item cat-item-48"><a href="http://www.yeahbutisitflash.com/?cat=48" title="View all posts filed under Tutorials">Tutorials</a>
+</li>
+	<li class="cat-item cat-item-139"><a href="http://www.yeahbutisitflash.com/?cat=139" title="View all posts filed under Unreal Engine">Unreal Engine</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.yeahbutisitflash.com/?cat=34" title="View all posts filed under WeeWorld">WeeWorld</a>
+</li>
+	<li class="cat-item cat-item-79"><a href="http://www.yeahbutisitflash.com/?cat=79" title="View all posts filed under X-Wing Targeting Computer">X-Wing Targeting Computer</a>
+</li>
+</ul>
+				</li>
+				
+				  <li id="linkcat-154" class="linkcat"><h2>Adobe Evangelists</h2>
+	<ul>
+<li><a href="http://www.remotesynthesis.com/" title="Brian Rinaldi’s blog." target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.remotesynthesis.com&#39;]);">Brian Rinaldi</a></li>
+<li><a href="http://www.duvos.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.duvos.com&#39;]);">Enrique Duvós</a></li>
+<li><a href="http://theflashblog.com/" title="Lee Brimelow’s Flash blog" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://theflashblog.com&#39;]);">Lee Brimelow</a></li>
+<li><a href="http://paultrani.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://paultrani.com&#39;]);">Paul Trani</a></li>
+<li><a href="http://renaun.com/blog/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://renaun.com&#39;]);">Renaun Erickson</a></li>
+<li><a href="http://www.webkitchen.be/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.webkitchen.be&#39;]);">Serge Jespers</a></li>
+<li><a href="http://www.bytearray.org/" title="Actionscript 3 Experiments and Flash love" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.bytearray.org&#39;]);">Thibault Imbert</a></li>
+<li><a href="http://www.flashrealtime.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.flashrealtime.com&#39;]);">Tom Krcha</a></li>
+
+	</ul>
+</li>
+  <li id="linkcat-2" class="linkcat"><h2>Blogs</h2>
+	<ul>
+<li><a href="http://alecmce.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://alecmce.com&#39;]);">Alec McEachran</a></li>
+<li><a href="http://alexfleisig.blogspot.com/" title="DreamWorks animation maverick Alex Fleisig" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://alexfleisig.blogspot.com&#39;]);">Alex Fleisig</a></li>
+<li><a href="http://noiseandheat.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://noiseandheat.com&#39;]);">Dave Wagner</a></li>
+<li><a href="http://www.emanueleferonato.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.emanueleferonato.com&#39;]);">Emanuele Feronato</a></li>
+<li><a href="http://www.flashandmath.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.flashandmath.com&#39;]);">Flash &amp; Math</a></li>
+<li><a href="http://flashdaily.net/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://flashdaily.net&#39;]);">Flash Daily</a></li>
+<li><a href="http://www.flashstreamworks.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.flashstreamworks.com&#39;]);">Flashstreamworks</a></li>
+<li><a href="http://jacksondunstan.com/" title="Mastering AS3" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://jacksondunstan.com&#39;]);">Jackson Dunstan</a></li>
+<li><a href="http://www.littlerobot.org.uk/" title="Also Known as LittleRobot." target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.littlerobot.org.uk&#39;]);">Lindsey Carr</a></li>
+<li><a href="http://www.mikechambers.com/blog/" title="Mike Chambers blog" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.mikechambers.com&#39;]);">Mike Chambers</a></li>
+<li><a href="http://blog.onebyonedesign.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://blog.onebyonedesign.com&#39;]);">onebyone</a></li>
+<li><a href="http://richardleggett.co.uk/blog/index.php" title="Exploring design and development" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://richardleggett.co.uk&#39;]);">Richard Leggett</a></li>
+<li><a href="http://treefortress.com/blog/" title="Game dev studio based in Canada" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://treefortress.com&#39;]);">Tree Fortress</a></li>
+<li><a href="http://typedarray.org/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://typedarray.org&#39;]);">TypedArray</a></li>
+<li><a href="http://villekoskela.org/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://villekoskela.org&#39;]);">Ville Koskela</a></li>
+
+	</ul>
+</li>
+  <li id="linkcat-4" class="linkcat"><h2>Websites</h2>
+	<ul>
+<li><a href="http://www.adobe.com/devnet.html" target="" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.adobe.com&#39;]);">ADC</a></li>
+<li><a href="http://www.adobe.com/" target="" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.adobe.com&#39;]);">Adobe</a></li>
+<li><a href="http://www.adobe.com/products/air.html" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.adobe.com&#39;]);">Adobe AIR</a></li>
+<li><a href="http://labs.adobe.com/" title="Tools, betas, announcements from Adobe" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://labs.adobe.com&#39;]);">Adobe Labs</a></li>
+<li><a href="http://www.blobina.com/" title="The animation showcase of Selina Wagner" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.blobina.com&#39;]);">Blobina</a></li>
+<li><a href="http://www.gotoandlearn.com/" title="Flash video tutorials" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.gotoandlearn.com&#39;]);">gotoandlearn</a></li>
+<li><a href="http://www.packtpub.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.packtpub.com&#39;]);">Packt Publishing</a></li>
+<li><a href="http://popjunk.co.uk/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://popjunk.co.uk&#39;]);">Steve Koren</a></li>
+<li><a href="http://udk.com/" target="" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://udk.com&#39;]);">UDK</a></li>
+<li><a href="http://unity3d.com/" target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://unity3d.com&#39;]);">Unity</a></li>
+<li><a href="http://www.weeworld.com/" title="Social networking site for tweens." target="_blank" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-blogroll&#39;,&#39;http://www.weeworld.com&#39;]);">WeeWorld</a></li>
+
+	</ul>
+</li>
+				
+				
+						</ul>
+	</div>
+			
+		
+</div>
+
+<script type="text/javascript">
+function fKtisPXbOmfFt() {
+	var o=document.getElementById("plZyeEKG7lBF");
+	o.value="249Gqb5H1Xa1";
+}
+var bUUUGs6tT8O7E = document.getElementById("submit");
+if (bUUUGs6tT8O7E) {
+	var cUm8ExQeqR8aJ = document.getElementById("plZyeEKG7lBF");
+	var pW8QI2CLJJx5P = bUUUGs6tT8O7E.parentNode;
+	pW8QI2CLJJx5P.appendChild(cUm8ExQeqR8aJ, bUUUGs6tT8O7E);
+	addHandler(bUUUGs6tT8O7E, "mousedown", fKtisPXbOmfFt);
+	addHandler(bUUUGs6tT8O7E, "keypress", fKtisPXbOmfFt);
+}
+</script>
+</div> <!-- MAINAREA -->
+
+
+
+<div id="footer">
+
+	<div class="left">
+		Powered by <a href="http://wordpress.org/">WordPress</a><br>
+	</div>
+	<div class="right">
+		Using the <a href="http://www.dailyblogtips.com/wordpress-themes/">DarkZen Theme</a><br>
+	</div>
+</div>
+</div> <!-- PAGE -->
+</div>
+
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/jquery.form.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.yeahbutisitflash.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/scripts.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var Sociali18n = {"commentReplyTitle":"Post a Reply"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Building a Parallax Scroller with Pixi.js  Part 1_files/social.js"></script>
+
+
+
+</body></html>
