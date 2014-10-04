@@ -36,10 +36,13 @@ input#button1 {
     font-size: 16px;
 }
 input#button2:hover {
-    border-style = dotted;
-    border-width = 2px;
+    border-style: dashed;
+    border-width: 3px;
+
 }
 input#button2 {
+    border-color: white;
+    border-width: 2px;
     margin-top: 12px;
     width: 100px;
     height: 40px;
