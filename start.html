@@ -61,13 +61,16 @@
 		//requestAnimFrame(move);
 		var key = event.which;
 		switch(key){
+			case 65:
 			case 37:
 				movement = 0;
 				left();
 				break;
+			case 87:
 			case 38:
 				jump();
 				break;
+			case 68:
 			case 39:
 				movement = 0;
 				right();
@@ -116,7 +119,6 @@
 
 	function jump(){
 		requestID = requestAnimFrame(jump);
-		console.log("jumping");
 		if(kirito.position.y > 120){
 			kirito.position.y -= 2;
 		}
@@ -129,7 +131,6 @@
 
 	function fall(){
 		requestID = requestAnimFrame(fall);
-		console.log("falling");
 		if(kirito.position.y < 200)
 			kirito.position.y += 4;
 		if(kirito.position.y == 200)
