@@ -1,4 +1,5 @@
 html {
+    letter-spacing: 1px;
     background-color: #1D1D1D;
 }
 .square {
@@ -55,6 +56,7 @@ input#button1 {
     background-color:#69D069;
 }
 div#titler {
+    letter-spacing: 5px;
     text-align: center;
     padding: 12px;
     padding-top: 96px;
