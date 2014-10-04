@@ -26,7 +26,7 @@
 	requestAnimFrame(animate);
 
 	// create a texture from an image path
-	var texture = PIXI.Texture.fromImage("kirito.png");
+	var texture = PIXI.Texture.fromImage("narutokoon.png");
 
 	// create a new Sprite using the texture
 	var kirito = new PIXI.Sprite(texture);
@@ -45,8 +45,8 @@
 	kirito2.anchor.x = 0.5;
 	kirito2.anchor.y = 0.5;
 
-	kirito2.position.x = 900;
-	kirito2.position.y = 600;
+	kirito2.position.x = 1000;
+	kirito2.position.y = 1000;
 
 	stage.addChild(kirito);
 	stage.addChild(kirito2);
@@ -75,10 +75,14 @@
 				movement = 0;
 				right();
 				break;
+			case 32:
 			case 81:
-				shoot();
+				event.preventDefault();
 				kirito2.position.x = kirito.position.x + kirito.width;
+				shoot();
 				break;
+			case 40:
+				event.preventDefault();
 		}
 	}
 

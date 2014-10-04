@@ -41,16 +41,148 @@
   				stage.addChild(mid);
 
 
-      			//renderer.render(stage);
+          // create a texture from an image path
+          var texture = PIXI.Texture.fromImage("narutokoon.png");
 
-      			requestAnimFrame(update);
-      			function update() {
+          // create a new Sprite using the texture
+          var kirito = new PIXI.Sprite(texture);
+          var kirito2 = new PIXI.Sprite(texture);
+
+
+          // move the sprite to the bottom left
+          kirito.position.x = 0;
+          kirito.position.y = 384 - kirito.height;
+
+          kirito2.anchor.x = 0.5;
+          kirito2.anchor.y = 0.5;
+
+          kirito2.position.x = 1000;
+          kirito2.position.y = 1000;
+
+          stage.addChild(kirito);
+          stage.addChild(kirito2);
+
+          document.addEventListener("keydown", move);
+
+          var movement = 0;
+          var jumpHeight = kirito.height*2;
+
+          function move(event) {
+          //requestAnimFrame(move);
+            var key = event.which;
+            switch(key){
+              case 65:
+              case 37:
+                movement = 0;
+                left();
+                break;
+              case 87:
+              case 38:
+               jump();
+               break;
+              case 68:
+              case 39:
+                movement = 0;
+                right();
+              break;
+              case 32:
+              case 81:
+                event.preventDefault();
+                kirito2.position.x = kirito.position.x + kirito.width;
+                kirito2.position.y = kirito.position.y+kirito.height/2;
+                shoot();
+              break;
+              case 40:
+                event.preventDefault();
+            }
+          }
+
+          // Keeps track of animation frame IDs
+          var requestID
+
+          // Binded to 'Q'. Shoots rotating 2nd Kirito
+          function shoot(){
+            requestID = requestAnimFrame(shoot);
+            kirito2.rotation += 0.5;
+            kirito2.position.x += 20;
+            if(kirito2.position.x > 1000){
+            cancelRequestAnimFrame(requestID);
+       
+            kirito2.position.x = 900
+            kirito2.position.y = 900
+          }
+        }
+
+          function left(){
+            requestID = requestAnimFrame(left);
+            movement++;
+            if(movement<12)
+              kirito.position.x -= 1;
+            else
+              cancelRequestAnimFrame(requestID);
+          }
+
+          function right(){
+            requestID = requestAnimFrame(right);
+            movement++;
+            if(movement<12)
+              kirito.position.x += 1;
+            else
+             cancelRequestAnimFrame(requestID);
+          }
+
+          function jump(){
+            requestID = requestAnimFrame(jump);
+            if(kirito.position.y > 384 - kirito.height - jumpHeight){
+              kirito.position.y -= 2;
+            }
+            if(kirito.position.y == 384 - kirito.height - jumpHeight){
+              //kirito.position.y += 10;
+              cancelRequestAnimFrame(requestID);
+              fall();
+            }
+          }
+
+          function fall(){
+            requestID = requestAnimFrame(fall);
+            if(kirito.position.y < 384 - kirito.height)
+              kirito.position.y += 4;
+            if(kirito.position.y == 384 - kirito.height)
+              cancelRequestAnimFrame(requestID);
+          }
+
+      		renderer.render(stage);
+
+      		requestAnimFrame(update);
+      		function update() {
 				  far.tilePosition.x -= 0.128;
 				  mid.tilePosition.x -= 0.64;
 
 				  renderer.render(stage);
 
 				  requestAnimFrame(update);
+
+
+          // Managing animation frames
+          window.cancelRequestAnimFrame = ( function() {
+            return window.cancelAnimationFrame          ||
+            window.webkitCancelRequestAnimationFrame    ||
+            window.mozCancelRequestAnimationFrame       ||
+            window.oCancelRequestAnimationFrame     ||
+            window.msCancelRequestAnimationFrame        ||
+            clearTimeout
+          } )();
+
+          window.requestAnimFrame = (function(){
+            return  window.requestAnimationFrame       || 
+            window.webkitRequestAnimationFrame || 
+            window.mozRequestAnimationFrame    || 
+            window.oRequestAnimationFrame      || 
+            window.msRequestAnimationFrame     || 
+            function(/* function */ callback, /* DOMElement */ element){
+              return window.setTimeout(callback, 1000 / 60);
+            };
+          })();
 }
     		}
   </script>
