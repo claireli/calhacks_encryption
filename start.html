@@ -31,15 +31,133 @@
 	// create a new Sprite using the texture
 	var kirito = new PIXI.Sprite(texture);
 
+
+	var kirito2 = new PIXI.Sprite(texture);
+
 	// center the sprites anchor point
 	kirito.anchor.x = 0.5;
 	kirito.anchor.y = 0.5;
 
 	// move the sprite to the center of the screen
 	kirito.position.x = 200;
-	kirito.position.y = 150;
+	kirito.position.y = 200;
+
+	kirito2.anchor.x = 0.5;
+	kirito2.anchor.y = 0.5;
+
+	kirito2.position.x = 900;
+	kirito2.position.y = 600;
 
 	stage.addChild(kirito);
+	stage.addChild(kirito2);
+
+
+	// Event listener for keyboard input
+	document.addEventListener("keydown", move);
+
+	var movement = 0;
+
+	function move(event) {
+		//requestAnimFrame(move);
+		var key = event.which;
+		switch(key){
+			case 37:
+				movement = 0;
+				left();
+				break;
+			case 38:
+				jump();
+				break;
+			case 39:
+				movement = 0;
+				right();
+				break;
+			case 81:
+				shoot();
+				kirito2.position.x = kirito.position.x + kirito.width;
+				break;
+		}
+	}
+
+	// Keeps track of animation frame IDs
+	var requestID
+
+	// Binded to 'Q'. Shoots rotating 2nd Kirito
+	function shoot(){
+		requestID = requestAnimFrame(shoot);
+		kirito2.rotation += 0.5;
+		kirito2.position.y = kirito.position.y;
+		kirito2.position.x += 20;
+		if(kirito2.position.x > 1000){
+			cancelRequestAnimFrame(requestID);
+		
+			kirito2.position.x = 900
+			kirito2.position.y = 900
+		}
+	}
+
+	function left(){
+		requestID = requestAnimFrame(left);
+		movement++;
+		if(movement<12)
+			kirito.position.x -= 1;
+		else
+			cancelRequestAnimFrame(requestID);
+	}
+
+	function right(){
+		requestID = requestAnimFrame(right);
+		movement++;
+		if(movement<12)
+			kirito.position.x += 1;
+		else
+			cancelRequestAnimFrame(requestID);
+	}
+
+	function jump(){
+		requestID = requestAnimFrame(jump);
+		console.log("jumping");
+		if(kirito.position.y > 120){
+			kirito.position.y -= 2;
+		}
+		if(kirito.position.y == 120){
+			//kirito.position.y += 10;
+			cancelRequestAnimFrame(requestID);
+			fall();
+		}
+	}
+
+	function fall(){
+		requestID = requestAnimFrame(fall);
+		console.log("falling");
+		if(kirito.position.y < 200)
+			kirito.position.y += 4;
+		if(kirito.position.y == 200)
+			cancelRequestAnimFrame(requestID);
+	}
+
+
+	// Managing animation frames
+	window.cancelRequestAnimFrame = ( function() {
+    	return window.cancelAnimationFrame          ||
+        window.webkitCancelRequestAnimationFrame    ||
+        window.mozCancelRequestAnimationFrame       ||
+        window.oCancelRequestAnimationFrame     ||
+        window.msCancelRequestAnimationFrame        ||
+        clearTimeout
+	} )();
+
+	window.requestAnimFrame = (function(){
+    	return  window.requestAnimationFrame       || 
+        window.webkitRequestAnimationFrame || 
+        window.mozRequestAnimationFrame    || 
+        window.oRequestAnimationFrame      || 
+        window.msRequestAnimationFrame     || 
+        function(/* function */ callback, /* DOMElement */ element){
+            return window.setTimeout(callback, 1000 / 60);
+        };
+	})();
+
 
 	function animate() {
 	    requestAnimFrame(animate);
@@ -55,16 +173,20 @@
 		
 	}
 	
+	
+
 	function claire(){
-		requestAnimFrame(claire)
+		requestID = requestAnimFrame(claire);
 		kirito.rotation += 0.05;
 		kirito.position.x += 20;
-		kiroto.position.y += 50;
+		kirito.position.y += 20;
 		console.log(kirito.position.x);
 		//alert("hello world");
 		if(kirito.position.x==300){
 			alert("You hit a bomb");
+			cancelRequestAnimFrame(requestID);
 		}
+		
 	}
 		
 
