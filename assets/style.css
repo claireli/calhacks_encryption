@@ -2,7 +2,7 @@ html {
     background-color: #1D1D1D;
 }
 .square {
-    width: 200px;
+    width: 210px;
     height: 30px;
     background: #6392c0;
     display: inline-block;
@@ -11,18 +11,20 @@ html {
 .row {
     font-size: 20px;
     padding: 6px;
-    text-align: center;
     padding-bottom: 20px;
+    position: relative;
+    text-align: center;
 }
-div#uploaders {
+.inline {
     display: inline-block;
+    text-align: center;
 }
 div#container{
     border-radius: 2%;
     width: 480px;
-    height: 480px;
+    height: 540px;
     position: absolute;
-    top: calc(50% - 240px);
+    top: calc(50% - 270px);
     left: calc(50% - 240px);
     color: black;
     background-color: #edeae5;
@@ -41,6 +43,7 @@ input#button2:hover {
 
 }
 input#button2 {
+    text-align: center;
     border-color: #edeae5;
     border-width: 2px;
     margin-top: 12px;
@@ -55,6 +58,6 @@ div#titler {
     text-align: center;
     padding: 12px;
     padding-top: 48px;
-    padding-bottom: 36px;
+    padding-bottom: 26px;
     font-size: 36px;
 }
