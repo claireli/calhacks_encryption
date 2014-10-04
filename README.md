@@ -7,4 +7,4 @@ This is the encryption azn dream team:
 CLAIRE LI
 NATHAN CHONG
 CALVIN KWAN
-RYAN FU
+JOHN CHAN
