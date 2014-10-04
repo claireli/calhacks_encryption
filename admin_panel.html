@@ -1,25 +1,29 @@
 <html>
 <head>
-<title>
-Administration Panel
-</title>
-
+    <title>Administration Panel</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 </head>
-<h1>Administration Panel</h1>
-
-<table>
-<tr>
-<td>Choose a token.</td>
-</tr>
-<tr>
-<td>Upload file.</td><td><input type="button" value="Sketchy File" id="button1"></input><input type="file" value="Sketchy File 2" id="button1"></input></td>
-</tr>
-<tr>
-<td>Set passphrase</td><td><input type="text"></input></td>
-</tr>
-<tr>
-<td>Select action key</td><td><input type="text"></input></td>
-</tr>
-</table>
-
+<body>
+    <div id = "container">
+    <div id = "titler">Administration Panel</div>
+    <div id = "first" class="row">
+        Choose a token:
+        <div class="square"></div>
+    </div>
+    <div id = "second-row" class="row">
+        Upload file:
+        <div id = "uploaders">
+        <input type="button" value="Sketchy File" id="button1"></input><input type="file" value="Sketchy File 2" id="button1"></input>
+        </div>
+    </div>
+    <div id = "third" class="row">
+        Set passphrase: &nbsp&nbsp&nbsp
+        <input type="text"></input>
+    </div>
+    <div id = "fourth" class="row">
+        Select action key: <input type="text"></input>
+    </div>
+    </div>
+</body>
 </html>
