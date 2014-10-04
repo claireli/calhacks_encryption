@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>pixi.js example 1</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+		}
+	</style>
+	<script src="pixi.js/bin/pixi.dev.js"></script>
+
+</head>
+<body>
+	<script>
+	// create an new instance of a pixi stage
+	var stage = new PIXI.Stage(0xCCFFCC);
+
+	// create a renderer instance
+	var renderer = PIXI.autoDetectRenderer(900, 600);
+
+	// add the renderer view element to the DOM
+	document.body.appendChild(renderer.view);
+
+	requestAnimFrame(animate);
+
+	// create a texture from an image path
+	var texture = PIXI.Texture.fromImage("kirito.png");
+
+	// create a new Sprite using the texture
+	var kirito = new PIXI.Sprite(texture);
+
+	// center the sprites anchor point
+	kirito.anchor.x = 0.5;
+	kirito.anchor.y = 0.5;
+
+	// move the sprite to the center of the screen
+	kirito.position.x = 200;
+	kirito.position.y = 150;
+
+	stage.addChild(kirito);
+
+	function animate() {
+	    requestAnimFrame(animate);
+		var x=1;
+	    // slow circle rotation
+	    if(x==0){
+		//kirito.rotation += 0.05;
+		}
+
+	    // render the stage
+	    renderer.render(stage);
+		
+		
+	}
+	
+	function claire(){
+		requestAnimFrame(claire)
+		kirito.rotation += 0.05;
+		//kirito.position.x += 20;
+		kiroto.position.y += 50;
+		console.log(kirito.position.x);
+		//alert("hello world");
+		if(kirito.position.x==300){
+			alert("You hit a bomb");
+		}
+	}
+		
+
+	
+	
+	</script>
+	
+	<input type="button" onClick="claire()" value="Change Mode">
+	
+	</body>
+</html>
