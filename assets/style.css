@@ -28,20 +28,30 @@ div#container{
     background-color: #edeae5;
     font-family: 'Slabo 27px', serif;
 }
+input {
+    font-family: 'Slabo 27px', serif;
+    font-size: 20px;
+}
 input#button1 {
     font-size: 16px;
 }
+input#button2:hover {
+    border-style = dotted;
+    border-width = 2px;
+}
 input#button2 {
+    margin-top: 12px;
     width: 100px;
     height: 40px;
     border-radius: 10%;
     font-size: 20px;
     font-family: 'Slabo 27px', serif;
+    background-color:#69D069;
 }
 div#titler {
     text-align: center;
     padding: 12px;
-    padding-top: 36px;
+    padding-top: 48px;
     padding-bottom: 36px;
     font-size: 36px;
 }
