@@ -24,8 +24,10 @@ Choose which file to encrypt<p>
 function encrypt(){
 	var encrypted = CryptoJS.AES.encrypt("Claire Secret Message", "hello");
 	var decrypted = CryptoJS.AES.decrypt(encrypted, "hello");
-    decrypted = String.fromCharCode(parseInt(decrypted.substr(2), 16));
-    alert(decrypted);
+    var message = "";
+    for (var i = 0; i < decrypted.toString().length; i += 2)
+        message += String.fromCharCode(parseInt(decrypted.toString().substr(i, 2), 16));
+    alert(message);
 	//console.log(encrypted);
 	//decryption is encrypted var, and the  (.decrypt) , and the passphrase ("hello")
 }
