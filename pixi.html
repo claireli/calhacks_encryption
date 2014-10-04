@@ -64,8 +64,10 @@
 
           document.addEventListener("keydown", move);
 
-          var movement = 0;
+          var movement = 0;         // Limits movement left and right
           var jumpHeight = kirito.height*2;
+          var midJump = false;      // Keeps track of whether Naruto is in mid jump
+          var startHeight = 384;    // The height that Naruto jumped from, updates when he lands
 
           function move(event) {
           //requestAnimFrame(move);
@@ -78,7 +80,8 @@
                 break;
               case 87:
               case 38:
-               jump();
+                if(!midJump)
+                  jump();
                break;
               case 68:
               case 39:
@@ -114,29 +117,36 @@
         }
 
           function left(){
-            requestID = requestAnimFrame(left);
-            movement++;
-            if(movement<12)
-              kirito.position.x -= 1;
-            else
-              cancelRequestAnimFrame(requestID);
+            if(kirito.position.x > 0){
+              requestID = requestAnimFrame(left);
+              movement++;
+              if(movement<12)
+                kirito.position.x -= 1;
+              else
+                cancelRequestAnimFrame(requestID);
+            }
           }
 
           function right(){
-            requestID = requestAnimFrame(right);
-            movement++;
-            if(movement<12)
-              kirito.position.x += 1;
+            if(kirito.position.x + kirito.width < mid.width - kirito.width){
+              requestID = requestAnimFrame(right);
+              movement++;
+              if(movement<12)
+                kirito.position.x += 1;
+              else
+                cancelRequestAnimFrame(requestID);
+            }
             else
-             cancelRequestAnimFrame(requestID);
+              scrollRight();
           }
 
           function jump(){
             requestID = requestAnimFrame(jump);
-            if(kirito.position.y > 384 - kirito.height - jumpHeight){
+            if(kirito.position.y > startHeight - kirito.height - jumpHeight){
               kirito.position.y -= 2;
+              midJump = true;
             }
-            if(kirito.position.y == 384 - kirito.height - jumpHeight){
+            if(kirito.position.y == startHeight - kirito.height - jumpHeight){
               //kirito.position.y += 10;
               cancelRequestAnimFrame(requestID);
               fall();
@@ -145,23 +155,31 @@
 
           function fall(){
             requestID = requestAnimFrame(fall);
-            if(kirito.position.y < 384 - kirito.height)
+            if(kirito.position.y < startHeight - kirito.height){
               kirito.position.y += 4;
-            if(kirito.position.y == 384 - kirito.height)
-              cancelRequestAnimFrame(requestID);
+              if(kirito.position.y == 386 - kirito.height){
+                cancelRequestAnimFrame(requestID);
+                midJump = false;
+              }
+            }
           }
 
-      		renderer.render(stage);
+          function scrollRight(){
+            requestID = requestAnimFrame(scrollRight);
+            far.tilePosition.x -= 1;
+            mid.tilePosition.x -= 4;
+            cancelRequestAnimFrame(requestID);
+          }
+
+      		//renderer.render(stage);
 
       		requestAnimFrame(update);
       		function update() {
-				  far.tilePosition.x -= 0.128;
-				  mid.tilePosition.x -= 0.64;
-
+				  //far.tilePosition.x -= 0.128;
+				  //mid.tilePosition.x -= 0.64;
 				  renderer.render(stage);
-
 				  requestAnimFrame(update);
-
+          }
 
           // Managing animation frames
           window.cancelRequestAnimFrame = ( function() {
@@ -183,7 +201,6 @@
               return window.setTimeout(callback, 1000 / 60);
             };
           })();
-}
     		}
   </script>
 
