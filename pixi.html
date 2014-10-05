@@ -56,7 +56,7 @@
 
           var numPlatforms = 10;
           var platInterval = 100;
-          var platStart = 900;
+          var platStart = 200;
           var platHeight = 300;
           var plat = [platform];
           for(var index = 1; index < numPlatforms; index++){
@@ -101,8 +101,8 @@
           var jumpHeight = kirito.height*2;
           var midJump = false;      // Keeps track of whether Naruto is in mid jump
           var startHeight = 384;    // The height that Naruto jumped from, updates when he lands
-          var scrollIndex = 0;      // Keeps track of how many pixels have been scrolled
-          var platIndex = 0;
+          //var scrollIndex = 0;      // Keeps track of how many pixels have been scrolled
+          //var platIndex = 0;
 
           function move(event) {
           //requestAnimFrame(move);
@@ -155,8 +155,8 @@
             if(kirito.position.x > 0){
               requestID = requestAnimFrame(left);
               movement++;
-              if(scrollIndex > 600)
-                platIndex += 4;
+             // if(scrollIndex > 600)
+               // platIndex += 4;
               if(movement<8)
                 kirito.position.x -= 4;
               else
@@ -165,11 +165,12 @@
           }
 
           function right(){
-            if(kirito.position.x + kirito.width < mid.width - 2.5*kirito.width){
+            maxX = mid.width - 2.5*kirito.width
+            if(kirito.position.x + kirito.width < maxX){
               requestID = requestAnimFrame(right);
               movement++;
-              if(platIndex > 0)
-                platIndex -= 4;
+             //if(platIndex > 0)
+               // platIndex -= 4;
               if(movement<8)
                 kirito.position.x += 4;
               else
@@ -197,13 +198,12 @@
             //if(kirito.position.y < startHeight - kirito.height){
               kirito.position.y += 4;
               //console.log(checkPlat());
-              console.log(kirito.position.x);
-              console.log(plat[0].position.x + platIndex);
               for(var i = 0; i < numPlatforms; i++){
+                //console.log(plat[i].position.x);
               if((kirito.position.y + kirito.height >= plat[i].position.y - 2 && 
                 kirito.position.y + kirito.height <= plat[i].position.y + 2 )&& 
-                kirito.position.x + kirito.width +scrollIndex< plat[i].position.x + plat[i].width + platIndex && 
-                kirito.position.x + kirito.width +scrollIndex> plat[i].position.x + platIndex
+                kirito.position.x + kirito.width < plat[i].position.x + plat[i].width && 
+                kirito.position.x + kirito.width > plat[i].position.x
                 ){
                 cancelRequestAnimFrame(requestID);
                 midJump = false;
@@ -224,7 +224,7 @@
             requestID = requestAnimFrame(scrollRight);
             far.tilePosition.x -= 1;
             mid.tilePosition.x -= 4;
-            scrollIndex += 4
+            //scrollIndex += 4
             for(var index = 0; index < numPlatforms; index++)
               plat[index].position.x -= 4;
 
