@@ -13,7 +13,7 @@
    		 	<canvas id="game-canvas" width="512" height="384"></canvas>
  		 </div>
     <a href="10 - Millionaire.mp3">Play music 1</a>
-    <a href="05 - Brush Your Hair.mp3">Play music 2</a>
+    <a href="05 - Brush Your Hair.m4a">Play music 2</a>
  		 <script src="pixi.js-master/bin/pixi.dev.js"></script>
  		  <script>
  		  var width = document.getElementById("game-canvas").width;
@@ -26,7 +26,7 @@
 				    512,
 				    384,
 				    document.getElementById("game-canvas")
-				);
+				    );
       			var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
       			far = new PIXI.TilingSprite(farTexture, 512, 256);
   				far.position.x = 0;
@@ -46,30 +46,108 @@
 
           // create a texture from an image path
           var texture = PIXI.Texture.fromImage("narutokoon.png");
-          var kirTexture = PIXI.Texture.fromImage("kirito.png");
+          var baggy = PIXI.Texture.fromImage("baggy.png");
+          //var kirTexture = PIXI.Texture.fromImage("kirito.png");
+
+          // Creates textures and sprites
+          var tex1 = PIXI.Texture.fromImage("img/baman.png");
+          var tex2 = PIXI.Texture.fromImage("img/brobama.png");
+          var tex3 = PIXI.Texture.fromImage("img/bucket.png");
+          var tex4 = PIXI.Texture.fromImage("img/kirito.png");
+          var tex5 = PIXI.Texture.fromImage("img/lettuce.png");
+          var tex6 = PIXI.Texture.fromImage("img/narutohair.png");
+          var tex7 = PIXI.Texture.fromImage("img/tomato.png");
+
+          var sp1 = new PIXI.Sprite(tex1);
+          var sp2 = new PIXI.Sprite(tex2);
+          var sp3 = new PIXI.Sprite(tex3);
+          var sp4 = new PIXI.Sprite(tex4);
+          var sp5 = new PIXI.Sprite(tex5);
+          var sp6 = new PIXI.Sprite(tex6);
+          var sp7 = new PIXI.Sprite(tex7);
 
           // create a new Sprite using the texture
           var kirito = new PIXI.Sprite(texture);
-          var kirito2 = new PIXI.Sprite(texture);
+          var kirito2 = new PIXI.Sprite(baggy);
 
-          var platform = new PIXI.Sprite(kirTexture);
+          // true if kirito is on a platform
+          kirito.platform = false;
 
-          var numPlatforms = 10;
+          //var platform = new PIXI.Sprite(kirTexture);
+
+          var numPlatforms = 7;
           var platInterval = 100;
-          var platStart = 200;
+          var platStart = 900;
           var platHeight = 300;
-          var plat = [platform];
-          for(var index = 1; index < numPlatforms; index++){
-            plat[index] = new PIXI.Sprite(kirTexture);
+          var heightInterval = 50
+          var plat = [];
+
+         /* var spNum = [0];
+          for(var i = 0; i < numPlatforms; i++)
+            spNum[i] = i+1
+
+          var platsLeft = numPlatforms-1;           // Number of platforms left to create
+          for(var i = 0; i < numPlatforms; i++){
+            var k = Math.random()*platsLeft;
+            var temp = spNum[platsLeft];
+            spNum[platsLeft] = spNum[k];
+            spNum[k] = temp;
+            switch(spNum[platsLeft]){
+              case 0:
+                plat[i] = sp1;
+                break;
+              case 1:
+                plat[i] = sp2;
+                break;
+              case 2:
+                plat[i] = sp3;
+                break;
+              case 3:
+                plat[i] = sp4;
+                break;
+              case 4:
+                plat[i] = sp5;
+                break;
+              case 5:
+                plat[i] = sp6;
+                break;
+              case 6:
+                plat[i] = sp7;
+                break;
+            }
+          }
+
+*/
+          plat[0] = sp1;
+          plat[1] = sp2;
+          plat[2] = sp3;
+          plat[3] = sp4;
+          plat[4] = sp5;
+          plat[5] = sp6;
+          plat[6] = sp7;
+
+          
+          var temp;
+          var ind = 0;
+          for(var i = 0; i < numPlatforms; i++){
+            ind = Math.floor((Math.random()*(numPlatforms-i))) + i;
+            temp = plat[i];
+            plat[i] = plat[ind];
+            plat[ind] = temp;
+          }
+
+
+          for(var index = 0; index < numPlatforms; index++){
+            //plat[index] = new PIXI.Sprite(kirTexture);
             plat[index].anchor.x = 0.5;
             plat[index].anchor.y = 0;
             plat[index].position.x = platStart + platInterval;
             platStart += platInterval;
             plat[index].position.y = platHeight;
-            platHeight -= 50;
+            platHeight -= heightInterval;
           }
 
-
+         
           // move the sprite to the bottom left
           kirito.position.x = 0;
           kirito.position.y = 384 - kirito.height;
@@ -80,18 +158,18 @@
           kirito2.position.x = 1000;
           kirito2.position.y = 1000;
 
-          platform.anchor.x = 0.5;
+          /*platform.anchor.x = 0.5;
           platform.anchor.y = 0;
 
           platform.position.x = platStart;
-          platform.position.y = 300;
+          platform.position.y = 300;*/
 
 
           stage.addChild(kirito);
           stage.addChild(kirito2);
-          stage.addChild(platform);
+          //stage.addChild(platform);
 
-          for(var index = 1; index < numPlatforms; index++){
+          for(var index = 0; index < numPlatforms; index++){
             stage.addChild(plat[index]);
           }
 
@@ -152,84 +230,118 @@
         }
 
           function left(){
-            if(kirito.position.x > 0){
-              requestID = requestAnimFrame(left);
-              movement++;
-             // if(scrollIndex > 600)
-               // platIndex += 4;
-              if(movement<8)
+        if(kirito.position.x > 0){
+            requestID = requestAnimFrame(left);
+            movement++;
+            // if(scrollIndex > 600)
+            // platIndex += 4;
+            if(movement<8) {
                 kirito.position.x -= 4;
-              else
+                drop(); 
+            } else {
                 cancelRequestAnimFrame(requestID);
             }
-          }
+        }
+    }
 
-          function right(){
-            maxX = mid.width - 2.5*kirito.width
-            if(kirito.position.x + kirito.width < maxX){
-              requestID = requestAnimFrame(right);
-              movement++;
-             //if(platIndex > 0)
-               // platIndex -= 4;
-              if(movement<8)
+    function right(){
+        maxX = mid.width - 2.5*kirito.width;
+        testing = false;
+        if(kirito.position.x + kirito.width < maxX){
+            requestID = requestAnimFrame(right);
+            movement++;
+            //if(platIndex > 0)
+            // platIndex -= 4;
+            if(movement<8) {
                 kirito.position.x += 4;
-              else
+                drop();
+            } else {
                 cancelRequestAnimFrame(requestID);
             }
-            else
-              scrollRight();
-          }
-
-          function jump(){
-            requestID = requestAnimFrame(jump);
-            if(kirito.position.y > startHeight - kirito.height - jumpHeight){
-              kirito.position.y -= 2;
-              midJump = true;
+        } else {
+            scrollRight();
+        }
+    }
+    function drop() {
+        if (!midJump) {
+            if (kirito.platform) {
+                if (!onPlatform(kirito.platform)) {
+                    kirito.platform = false;
+                    fall();
+                }
             }
-            if(kirito.position.y == startHeight - kirito.height - jumpHeight){
-              //kirito.position.y += 10;
-              cancelRequestAnimFrame(requestID);
-              fall();
-            }
-          }
+        }
+    }
+    function jump(){
+        requestID = requestAnimFrame(jump);
+        if(kirito.position.y > startHeight - kirito.height - jumpHeight){
+            kirito.position.y -= 2;
+            midJump = true;
+        }
+        if(kirito.position.y == startHeight - kirito.height - jumpHeight){
+            //kirito.position.y += 10;
+            cancelRequestAnimFrame(requestID);
+            fall();
+        }
+    }
 
-          function fall(){
-            requestID = requestAnimFrame(fall);
-            //if(kirito.position.y < startHeight - kirito.height){
-              kirito.position.y += 4;
-              //console.log(checkPlat());
-              for(var i = 0; i < numPlatforms; i++){
-                //console.log(plat[i].position.x);
-              if((kirito.position.y + kirito.height >= plat[i].position.y - 2 && 
-                kirito.position.y + kirito.height <= plat[i].position.y + 2 )&& 
-                kirito.position.x + kirito.width < plat[i].position.x + plat[i].width && 
-                kirito.position.x + kirito.width > plat[i].position.x
-                ){
+    function fall(){
+        requestID = requestAnimFrame(fall);
+
+        //if(kirito.position.y < startHeight - kirito.height){
+        kirito.position.y += 4;
+        for(var i = 0; i < numPlatforms; i++){
+            if (onPlatform(plat[i])) {
                 cancelRequestAnimFrame(requestID);
                 midJump = false;
                 startHeight = kirito.position.y + kirito.height;
-              }
-            //}
-
-              if(kirito.position.y >= 386 - kirito.height - 2 && kirito.position.y <= 386 - kirito.height + 2){
-                cancelRequestAnimFrame(requestID);
-                midJump = false;
-                startHeight = 384;
-
-              }
             }
-          }
+        }
 
-          function scrollRight(){
-            requestID = requestAnimFrame(scrollRight);
-            far.tilePosition.x -= 1;
-            mid.tilePosition.x -= 4;
-            //scrollIndex += 4
-            for(var index = 0; index < numPlatforms; index++)
-              plat[index].position.x -= 4;
-
+        if(kirito.position.y >= 386 - kirito.height - 2 && kirito.position.y <= 386 - kirito.height + 2){
             cancelRequestAnimFrame(requestID);
-          }
+            midJump = false;
+            startHeight = 384;
+
+        }
+    }
+    
+    // Checks if on platform
+    function onPlatform(platform) {
+        // check kheight == platheight
+        // check xBounds
+
+        if (Math.abs(kirito.position.y + kirito.height - platform.position.y)<=4) {
+            kleft = kirito.position.x;
+            kright = kleft + kirito.width;
+            pleft = platform.position.x;
+            pright = pleft + platform.width;                
+            if ((kright >= pleft && kright <= pright) || // right half on
+                (kleft >= pleft && kleft <= pright) || // left half on
+                (kleft <= pleft && kright >= pright)) { //check x
+                console.log('in bounds');
+                kirito.platform = platform;
+                return true;
+            } else {
+                return false;
+                console.log('out of bounds');
+            }
+
+        }
+
+    }
+
+    function scrollRight(){
+        requestID = requestAnimFrame(scrollRight);
+        far.tilePosition.x -= 1;
+        mid.tilePosition.x -= 4;
+        //scrollIndex += 4
+        for(var index = 0; index < numPlatforms; index++){ 
+            plat[index].position.x -= 4;
+        }
+        drop()
+        cancelRequestAnimFrame(requestID);
+    }
 
           // Checks if Naruto's x coordinates collides with a platform's. Returns false if not
           function checkPlat(){
