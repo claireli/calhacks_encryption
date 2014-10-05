@@ -6,19 +6,24 @@
       body { background-color: #000000; }
       canvas { background-color: #222222; }
 
+
     </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   </head>
   <body onload="init();">
   		 <div align="center">
    		 	<canvas id="game-canvas" width="1000" height="680"></canvas>
  		 </div>
+     <div id = "admin"><a href="admin_panel.html">admin panel </a> </div>
     <a href="10 - Millionaire.mp3">Play music 1</a>
     <a href="05 - Brush Your Hair.m4a">Play music 2</a>
+
  		 <script src="pixi.js-master/bin/pixi.dev.js"></script>
  		  <script>
  		  var width = document.getElementById("game-canvas").width;
     		function init() 
     		{
+          $("#admin").hide();
       			//console.log("init() successfully called.");
       			stage = new PIXI.Stage(0x66FF99);
       			renderer = PIXI.autoDetectRenderer
@@ -339,7 +344,22 @@
           {
             if (event.keyCode === 79 && ((kirito.position.y + kirito.height) - santaHeight) <= 4 && 
               ((kirito.position.y + kirito.height) - santaHeight) >= -4)
-              alert("Found Santa");
+{
+                $(document).ready(function(){
+
+                $(document).keydown(function(event){
+                  if(event.which == 79){
+                    $("#admin").show();
+                    $("#admin").style.display = "inline-block";
+                  }
+                  //alert("found");
+                });
+              });
+
+              //alert("Found Santa");
+            }
+
+
           }
 
       		//renderer.render(stage);
@@ -371,7 +391,7 @@
             };
           })();
     		}
-  </script>
 
+  </script>
   </body>
 </html>
