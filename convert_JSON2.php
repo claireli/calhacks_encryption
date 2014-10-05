@@ -11,7 +11,7 @@ if($mysqli){
 //echo "Storing into array<p>";
 
 
-$enc=$_POST['enc'];
+//$enc=$_POST['enkrpt'];
 
 echo '    <div id = "container">
     <div id = "titler">File Information</div>
@@ -20,12 +20,11 @@ echo '    <div id = "container">
 
 ';
 
-$sql="INSERT INTO calhacks.user_input(encryption_data) 
-VALUES ('$enc')";
+//$sql="INSERT INTO calhacks.user_input(encryption_data) VALUES ('$enc')";
 
-$result = mysql_query($sql);
+//$result = mysql_query($sql);
 
-if (!$result) {
+/*if (!$result) {
     $message  = 'Invalid query: ' . mysql_error() . "\n";
     $message .= 'Whole query: ' . $sql;
     die($message);
@@ -34,7 +33,7 @@ if (!$result) {
 else{
 	//echo "Successfully created product.";
 }
-
+*/
 //echo $enc;
 
 ?>
@@ -50,7 +49,7 @@ else{
 <body>
 
     <div id = "first" class="row">
-        Your secret is safe with us.<p> <?php echo $enc; ?>
+        Your secret is safe with us.<p> <?php //echo $enc; ?>
 	<input type="button" value="Save">
     </div>
     
