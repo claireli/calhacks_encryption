@@ -9,10 +9,16 @@ html {
     display: inline-block;
     border-radius: 5%;
 }
+.tokens {
+    padding: 4px;
+}
+div#images2 {
+    display: none;
+}
 .row {
     font-size: 20px;
     padding: 6px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     position: relative;
     text-align: center;
 }
@@ -31,9 +37,15 @@ div#container{
     background-color: #edeae5;
     font-family: 'Slabo 27px', serif;
 }
+.tokenator {
+    display: inline-block;
+    padding: 6px;
+    padding-left: 20px;
+}
 input {
     font-family: 'Slabo 27px', serif;
     font-size: 20px;
+    padding-left: 10px;
 }
 input#button1 {
     font-size: 16px;
@@ -47,10 +59,10 @@ input#button2 {
     text-align: center;
     border-color: #edeae5;
     border-width: 2px;
-    margin-top: 12px;
     width: 100px;
     height: 40px;
     border-radius: 10%;
+    margin-top: 6px;
     font-size: 20px;
     font-family: 'Slabo 27px', serif;
     background-color:#69D069;
@@ -60,6 +72,6 @@ div#titler {
     text-align: center;
     padding: 12px;
     padding-top: 48px;
-    padding-bottom: 36px;
+    padding-bottom: 24px;
     font-size: 36px;
 }
