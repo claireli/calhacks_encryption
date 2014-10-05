@@ -5,12 +5,15 @@
     <style>
       body { background-color: #000000; }
       canvas { background-color: #222222; }
+
     </style>
   </head>
   <body onload="init();">
   		 <div align="center">
    		 	<canvas id="game-canvas" width="512" height="384"></canvas>
  		 </div>
+    <a href="10 - Millionaire.mp3">Play music 1</a>
+    <a href="05 - Brush Your Hair.mp3">Play music 2</a>
  		 <script src="pixi.js-master/bin/pixi.dev.js"></script>
  		  <script>
  		  var width = document.getElementById("game-canvas").width;
@@ -98,6 +101,8 @@
           var jumpHeight = kirito.height*2;
           var midJump = false;      // Keeps track of whether Naruto is in mid jump
           var startHeight = 384;    // The height that Naruto jumped from, updates when he lands
+          var scrollIndex = 0;      // Keeps track of how many pixels have been scrolled
+          var platIndex = 0;
 
           function move(event) {
           //requestAnimFrame(move);
@@ -150,8 +155,10 @@
             if(kirito.position.x > 0){
               requestID = requestAnimFrame(left);
               movement++;
-              if(movement<12)
-                kirito.position.x -= 1;
+              if(scrollIndex > 600)
+                platIndex += 4;
+              if(movement<8)
+                kirito.position.x -= 4;
               else
                 cancelRequestAnimFrame(requestID);
             }
@@ -161,8 +168,10 @@
             if(kirito.position.x + kirito.width < mid.width - 2.5*kirito.width){
               requestID = requestAnimFrame(right);
               movement++;
-              if(movement<12)
-                kirito.position.x += 1;
+              if(platIndex > 0)
+                platIndex -= 4;
+              if(movement<8)
+                kirito.position.x += 4;
               else
                 cancelRequestAnimFrame(requestID);
             }
@@ -187,11 +196,15 @@
             requestID = requestAnimFrame(fall);
             //if(kirito.position.y < startHeight - kirito.height){
               kirito.position.y += 4;
+              //console.log(checkPlat());
+              console.log(kirito.position.x);
+              console.log(plat[0].position.x + platIndex);
               for(var i = 0; i < numPlatforms; i++){
               if((kirito.position.y + kirito.height >= plat[i].position.y - 2 && 
                 kirito.position.y + kirito.height <= plat[i].position.y + 2 )&& 
-                kirito.position.x + kirito.width < plat[i].position.x + plat[i].width && 
-                kirito.position.x + kirito.width > plat[i].position.x){
+                kirito.position.x + kirito.width +scrollIndex< plat[i].position.x + plat[i].width + platIndex && 
+                kirito.position.x + kirito.width +scrollIndex> plat[i].position.x + platIndex
+                ){
                 cancelRequestAnimFrame(requestID);
                 midJump = false;
                 startHeight = kirito.position.y + kirito.height;
@@ -211,6 +224,7 @@
             requestID = requestAnimFrame(scrollRight);
             far.tilePosition.x -= 1;
             mid.tilePosition.x -= 4;
+            scrollIndex += 4
             for(var index = 0; index < numPlatforms; index++)
               plat[index].position.x -= 4;
 
@@ -219,20 +233,27 @@
 
           // Checks if Naruto's x coordinates collides with a platform's. Returns false if not
           function checkPlat(){
-            var xmin = kirito.position.x;
-            var xmax = kirito.position.x + kirito.width;
+            var xmin = kirito.position.x + scrollIndex;
+            var xmax = kirito.position.x + kirito.width + scrollIndex;
+            var median = xmin + kirito.width/2;
             var platMin;
             var platMax;
 
             for(var i = 0; i < numPlatforms; i++){
               platMin = plat[i].position.x;
               platMax = plat[i].position.x + plat[i].width;
-              if(xmax < platMin)
-                return false;
-              if(xmin > platMax)
-                return false;
+              //console.log(xmin);
+              //console.log(xmax);
+              //console.log(median);
+              //console.log(platMin);
+              //console.log(platMax);
+              if(xmax >= platMin && xmin <= platMax && 
+                median <= platMax && median >= platMin)
+                return true;
+              //if(xmin < platMax)
+                //return false;
             }
-            return true;
+            return false;
           }
 
 
