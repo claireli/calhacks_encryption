@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Administration Panel</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id = "container">
+    <div id = "titler">Administration Panel</div>
+    <form action="convert_JSON.php" method="post" enctype="multipart/form-data">
+    <div id = "neg1" class="row">
+        Name encryption:
+        <div class = "inline">
+        <input type="text" name="file_name"></input>
+        </div>
+    </div>
+    <div id = "first" class="row">	
+        Choose a token:&nbsp&nbsp&nbsp&nbsp 
+        <div class = "inline">
+		<input type="hidden" name="token">
+        </div>
+    </div>
+    <div id = "second-row" class="row">
+        Upload file:
+        <div class = "inline">
+<input type="file" name="file" id="file"><br>
+
+        </div>
+    </div>
+    <div id = "third" class="row">
+        Set passphrase: &nbsp&nbsp&nbsp
+        <div class = "inline">
+        <input type="text" name="pass"></input>
+        </div>
+    </div>
+    <div id = "fourth" class="row">
+        <div class = "inline">
+        Select action key: <input type="text" name="key"></input>
+        </div>
+        </div>
+    <div id = "fifth" class = "row">
+        <input type="submit" value="Submit" id="button2"></input>
+    </div>
+    </form>
+    </div>
+</body>
+</html>
