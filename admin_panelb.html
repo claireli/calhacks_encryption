@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Administration Panel</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <input type="hidden" id = "token" name="nye">
+</head>
+<body>
+    <div id = "container">
+    <div id = "titler">Administration Panel</div>
+    <form action="convert_JSON.php" method="post" enctype="multipart/form-data">
+    <div id = "neg1" class="row">
+        Name encryption:
+        <div class = "inline">
+        <input type="text" name="file_name"></input>
+        </div>
+    </div>
+    <div id = "first" class="row">	
+        Choose a token:
+        <input type="button" value="Next:" onclick = "ntoggle()"><script type="text/javascript">
+            function ntoggle() {
+                var e0 = document.getElementById("images1");
+                var e1 = document.getElementById("images2");
+                if(e0.style.display == 'none') {
+                    e0.style.display = 'block';
+                    e1.style.display = 'none';
+                }
+                else {
+                    e1.style.display = 'block';
+                    e0.style.display = 'none';
+                }
+            }
+            var currtoken = "";
+            function updatetoken(id) {
+                currtoken = id;
+                document.getElementById("token").name = currtoken;
+            }
+        </script>
+        <div id="images1" class="tokens">
+            <input type="image" src = "img/bucket.png" id="bucket" onClick="updatetoken("bucket")">
+            <input type="image" src = "img/narutohair.png" id="narutohair" onClick="updatetoken("narutohair")">
+            <input type = "image" src = "img/tomato.png" id="tomato" onClick="updatetoken("tomato")">
+        </div>
+        <div id="images2" class="tokens">
+            <input type="image" src = "img/baman.png" id="baman" onClick = "updatetoken("baman")">
+            <input type="image" src = "img/brobama.png" id="brobama" onClick = "updatetoken("brobama")">
+            <input type="image" src = "img/lettuce.png" id="lettuce" onClick = "updatetoken("lettuce")">
+        </div>
+    </div>
+    <div id = "second-row" class="row">
+        Upload file:
+        <div class = "inline">
+<input type="file" name="file" id="file"><br>
+
+        </div>
+    </div>
+    <div id = "third" class="row">
+        Set passphrase: &nbsp&nbsp&nbsp
+        <div class = "inline">
+        <input type="text" name="pass"></input>
+        </div>
+    </div>
+    <div id = "fourth" class="row">
+        <div class = "inline">
+        Select action key: <input type="text" name="key"></input>
+        </div>
+        </div>
+    <div id = "fifth" class = "row">
+        <input type="submit" value="Submit" id="button2"></input>
+    </div>
+    </form>
+    </div>
+</body>
+</html>
