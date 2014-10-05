@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Parallax Scrolling Demo</title>
+    <title>Crop Ninety</title>
     <style>
       body { background-color: #000000; }
       canvas { background-color: #222222; }
@@ -124,7 +124,7 @@
 
           // Figure out height of Santa
           var santaInd = tokens.indexOf("santa");
-          var santaHeight = platHeightCpy + (heightInterval*santaInd);
+          var santaHeight = platHeightCpy - (heightInterval*santaInd);
 
 
           // move the sprite to the bottom left
@@ -206,26 +206,30 @@
             kirito2.position.x = 900
             kirito2.position.y = 900
             
+            console.log(kirito.position.y);
+            console.log(santaHeight);
+            console.log(kirito.height);
           }
         }
 
 
           function left(){
-        if(kirito.position.x > 0){
-            requestID = requestAnimFrame(left);
-            movement++;
+            if(kirito.position.x > 0){
+              requestID = requestAnimFrame(left);
+              movement++;
             // if(scrollIndex > 600)
             // platIndex += 4;
-            if(movement<8) {
+              if(movement<8) {
                 kirito.position.x -= 4;
                 drop(); 
-            } else {
+              } 
+              else {
                 cancelRequestAnimFrame(requestID);
+              }
             }
-        }
-    }
+          }
 
-    function right(){
+      function right(){
         maxX = mid.width - 2.5*kirito.width;
         testing = false;
         if(kirito.position.x + kirito.width < maxX){
@@ -242,8 +246,10 @@
         } else {
             scrollRight();
         }
-    }
-    function drop() {
+      }
+
+      // Checks if it's necessary for Naruto to fall
+      function drop() {
         if (!midJump) {
             if (kirito.platform) {
                 if (!onPlatform(kirito.platform)) {
@@ -252,8 +258,9 @@
                 }
             }
         }
-    }
-    function jump(){
+      }
+
+      function jump(){
         requestID = requestAnimFrame(jump);
         if(kirito.position.y > startHeight - kirito.height - jumpHeight){
             kirito.position.y -= 2;
@@ -264,9 +271,9 @@
             cancelRequestAnimFrame(requestID);
             fall();
         }
-    }
+      }
 
-    function fall(){
+      function fall(){
         requestID = requestAnimFrame(fall);
 
         //if(kirito.position.y < startHeight - kirito.height){
@@ -287,8 +294,8 @@
         }
     }
     
-    // Checks if on platform
-    function onPlatform(platform) {
+      // Checks if on platform
+      function onPlatform(platform) {
         // check kheight == platheight
         // check xBounds
 
@@ -305,7 +312,7 @@
                 return true;
             } else {
                 return false;
-                console.log('out of bounds');
+                //console.log('out of bounds');
             }
 
         }
@@ -324,9 +331,11 @@
         cancelRequestAnimFrame(requestID);
     }
 
+
           window.onkeydown = function(event)
           {
-            if (event.keyCode === 79 && (kirito.position.y + kirito.height - santaHeight) <= 4)
+            if (event.keyCode === 79 && ((kirito.position.y + kirito.height) - santaHeight) <= 4 && 
+              ((kirito.position.y + kirito.height) - santaHeight) >= -4)
               alert("Found Santa");
           }
 
@@ -334,8 +343,6 @@
 
       		requestAnimFrame(update);
       		function update() {
-				  //far.tilePosition.x -= 0.128;
-				  //mid.tilePosition.x -= 0.64;
 				  renderer.render(stage);
 				  requestAnimFrame(update);
           }
