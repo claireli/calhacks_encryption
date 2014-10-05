@@ -37,11 +37,6 @@ div#container{
     background-color: #edeae5;
     font-family: 'Slabo 27px', serif;
 }
-.tokenator {
-    display: inline-block;
-    padding: 6px;
-    padding-left: 20px;
-}
 input {
     font-family: 'Slabo 27px', serif;
     font-size: 20px;
