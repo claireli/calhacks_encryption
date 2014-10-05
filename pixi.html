@@ -49,6 +49,8 @@
           var baggy = PIXI.Texture.fromImage("baggy.png");
           //var kirTexture = PIXI.Texture.fromImage("kirito.png");
 
+          var tokens = ["baman", "brobama", "bucket", "kirito", "lettuce", "narutohair", "tomato", "santa"];
+
           // Creates textures and sprites
           var tex1 = PIXI.Texture.fromImage("img/baman.png");
           var tex2 = PIXI.Texture.fromImage("img/brobama.png");
@@ -57,6 +59,7 @@
           var tex5 = PIXI.Texture.fromImage("img/lettuce.png");
           var tex6 = PIXI.Texture.fromImage("img/narutohair.png");
           var tex7 = PIXI.Texture.fromImage("img/tomato.png");
+          var tex8 = PIXI.Texture.fromImage("santa.png");
 
           var sp1 = new PIXI.Sprite(tex1);
           var sp2 = new PIXI.Sprite(tex2);
@@ -65,6 +68,7 @@
           var sp5 = new PIXI.Sprite(tex5);
           var sp6 = new PIXI.Sprite(tex6);
           var sp7 = new PIXI.Sprite(tex7);
+          var sp8 = new PIXI.Sprite(tex8);
 
           // create a new Sprite using the texture
           var kirito = new PIXI.Sprite(texture);
@@ -75,11 +79,11 @@
 
           //var platform = new PIXI.Sprite(kirTexture);
 
-          var numPlatforms = 7;
-          var platInterval = 100;
-          var platStart = 900;
+          var numPlatforms = 8;
+          var platInterval = 80;
+          var platStart = 400;
           var platHeight = 300;
-          var heightInterval = 50
+          var heightInterval = 30
           var plat = [];
 
          /* var spNum = [0];
@@ -125,15 +129,21 @@
           plat[4] = sp5;
           plat[5] = sp6;
           plat[6] = sp7;
+          plat[7] = sp8;
 
           
+          // Randomizes platforms and strings representing them.
           var temp;
+          var temp2;
           var ind = 0;
           for(var i = 0; i < numPlatforms; i++){
             ind = Math.floor((Math.random()*(numPlatforms-i))) + i;
             temp = plat[i];
             plat[i] = plat[ind];
             plat[ind] = temp;
+            temp2 = tokens[i];
+            tokens[i] = tokens[ind];
+            tokens[ind] = temp2;
           }
 
 
@@ -229,6 +239,7 @@
           }
         }
 
+
           function left(){
         if(kirito.position.x > 0){
             requestID = requestAnimFrame(left);
@@ -319,7 +330,7 @@
             if ((kright >= pleft && kright <= pright) || // right half on
                 (kleft >= pleft && kleft <= pright) || // left half on
                 (kleft <= pleft && kright >= pright)) { //check x
-                console.log('in bounds');
+                //console.log('in bounds');
                 kirito.platform = platform;
                 return true;
             } else {
