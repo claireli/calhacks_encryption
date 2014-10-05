@@ -83,45 +83,10 @@
           var platInterval = 80;
           var platStart = 400;
           var platHeight = 300;
-          var heightInterval = 30
+          var platHeightCpy = 300;
+          var heightInterval = 30;
           var plat = [];
 
-         /* var spNum = [0];
-          for(var i = 0; i < numPlatforms; i++)
-            spNum[i] = i+1
-
-          var platsLeft = numPlatforms-1;           // Number of platforms left to create
-          for(var i = 0; i < numPlatforms; i++){
-            var k = Math.random()*platsLeft;
-            var temp = spNum[platsLeft];
-            spNum[platsLeft] = spNum[k];
-            spNum[k] = temp;
-            switch(spNum[platsLeft]){
-              case 0:
-                plat[i] = sp1;
-                break;
-              case 1:
-                plat[i] = sp2;
-                break;
-              case 2:
-                plat[i] = sp3;
-                break;
-              case 3:
-                plat[i] = sp4;
-                break;
-              case 4:
-                plat[i] = sp5;
-                break;
-              case 5:
-                plat[i] = sp6;
-                break;
-              case 6:
-                plat[i] = sp7;
-                break;
-            }
-          }
-
-*/
           plat[0] = sp1;
           plat[1] = sp2;
           plat[2] = sp3;
@@ -146,7 +111,7 @@
             tokens[ind] = temp2;
           }
 
-
+          // Sets height, distance apart, etc. for each token
           for(var index = 0; index < numPlatforms; index++){
             //plat[index] = new PIXI.Sprite(kirTexture);
             plat[index].anchor.x = 0.5;
@@ -157,7 +122,11 @@
             platHeight -= heightInterval;
           }
 
-         
+          // Figure out height of Santa
+          var santaInd = tokens.indexOf("santa");
+          var santaHeight = platHeightCpy + (heightInterval*santaInd);
+
+
           // move the sprite to the bottom left
           kirito.position.x = 0;
           kirito.position.y = 384 - kirito.height;
@@ -236,6 +205,7 @@
        
             kirito2.position.x = 900
             kirito2.position.y = 900
+            
           }
         }
 
@@ -354,31 +324,11 @@
         cancelRequestAnimFrame(requestID);
     }
 
-          // Checks if Naruto's x coordinates collides with a platform's. Returns false if not
-          function checkPlat(){
-            var xmin = kirito.position.x + scrollIndex;
-            var xmax = kirito.position.x + kirito.width + scrollIndex;
-            var median = xmin + kirito.width/2;
-            var platMin;
-            var platMax;
-
-            for(var i = 0; i < numPlatforms; i++){
-              platMin = plat[i].position.x;
-              platMax = plat[i].position.x + plat[i].width;
-              //console.log(xmin);
-              //console.log(xmax);
-              //console.log(median);
-              //console.log(platMin);
-              //console.log(platMax);
-              if(xmax >= platMin && xmin <= platMax && 
-                median <= platMax && median >= platMin)
-                return true;
-              //if(xmin < platMax)
-                //return false;
-            }
-            return false;
+          window.onkeydown = function(event)
+          {
+            if (event.keyCode === 79 && (kirito.position.y + kirito.height - santaHeight) <= 4)
+              alert("Found Santa");
           }
-
 
       		//renderer.render(stage);
 
