@@ -1,0 +1,30 @@
+<html><head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+$(document).ready(function(){
+	$("#display2").hide();
+  });
+  
+function swap(){
+	$("#display").hide();
+	$("#display2").show();
+}
+</script>
+</head>
+<body>
+
+Toggle Test 
+
+<p>
+
+<div id="display">STUFF HERE....</div>
+<div id="display2">Even more stuff...</div>
+
+<p>
+
+<input type="button" value="Click me to switch divs" onclick="swap()">
+
+</body>
+</html>
