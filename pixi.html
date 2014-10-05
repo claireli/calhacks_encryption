@@ -10,7 +10,7 @@
   </head>
   <body onload="init();">
   		 <div align="center">
-   		 	<canvas id="game-canvas" width="512" height="384"></canvas>
+   		 	<canvas id="game-canvas" width="1000" height="680"></canvas>
  		 </div>
     <a href="10 - Millionaire.mp3">Play music 1</a>
     <a href="05 - Brush Your Hair.m4a">Play music 2</a>
@@ -23,22 +23,22 @@
       			stage = new PIXI.Stage(0x66FF99);
       			renderer = PIXI.autoDetectRenderer
       			(
-				    512,
-				    384,
+				    1000,
+				    680,
 				    document.getElementById("game-canvas")
 				    );
-      			var farTexture = PIXI.Texture.fromImage("resources/bg-far.png");
-      			far = new PIXI.TilingSprite(farTexture, 512, 256);
+      			var farTexture = PIXI.Texture.fromImage("resources/wheatfield.png");
+      			far = new PIXI.TilingSprite(farTexture, 1000, 680);
   				far.position.x = 0;
   				far.position.y = 0;
           far.tilePosition.x = 0;
           far.tilePosition.y = 0;
   				stage.addChild(far);
 
-  				var midTexture = PIXI.Texture.fromImage("resources/bg-mid.png");
-          mid = new PIXI.TilingSprite(midTexture, 512, 256);
+  				var midTexture = PIXI.Texture.fromImage("resources/wheatfield.png");
+          mid = new PIXI.TilingSprite(midTexture, 1000, 680);
   				mid.position.x = 0;
-  				mid.position.y = 128;
+  				mid.position.y = 0;
           mid.tilePosition.x = 0;
           mid.tilePosition.y = 0;
   				stage.addChild(mid);
@@ -81,9 +81,9 @@
 
           var numPlatforms = 8;
           var platInterval = 80;
-          var platStart = 400;
-          var platHeight = 300;
-          var platHeightCpy = 300;
+          var platStart = 600;
+          var platHeight = 600;
+          var platHeightCpy = 600;
           var heightInterval = 30;
           var plat = [];
 
@@ -129,13 +129,13 @@
 
           // move the sprite to the bottom left
           kirito.position.x = 0;
-          kirito.position.y = 384 - kirito.height;
+          kirito.position.y = 680 - kirito.height;
 
           kirito2.anchor.x = 0.5;
           kirito2.anchor.y = 0.5;
 
-          kirito2.position.x = 1000;
-          kirito2.position.y = 1000;
+          kirito2.position.x = 2000;
+          kirito2.position.y = 2000;
 
           /*platform.anchor.x = 0.5;
           platform.anchor.y = 0;
@@ -157,7 +157,7 @@
           var movement = 0;         // Limits movement left and right
           var jumpHeight = kirito.height*2;
           var midJump = false;      // Keeps track of whether Naruto is in mid jump
-          var startHeight = 384;    // The height that Naruto jumped from, updates when he lands
+          var startHeight = 680;    // The height that Naruto jumped from, updates when he lands
           //var scrollIndex = 0;      // Keeps track of how many pixels have been scrolled
           //var platIndex = 0;
 
@@ -200,11 +200,11 @@
             requestID = requestAnimFrame(shoot);
             kirito2.rotation += 0.5;
             kirito2.position.x += 20;
-            if(kirito2.position.x > 1000){
+            if(kirito2.position.x > 2000){
             cancelRequestAnimFrame(requestID);
        
-            kirito2.position.x = 900
-            kirito2.position.y = 900
+            kirito2.position.x = 2000
+            kirito2.position.y = 2000
             
             console.log(kirito.position.y);
             console.log(santaHeight);
@@ -286,10 +286,10 @@
             }
         }
 
-        if(kirito.position.y >= 386 - kirito.height - 2 && kirito.position.y <= 386 - kirito.height + 2){
+        if(kirito.position.y >= 682 - kirito.height - 2 && kirito.position.y <= 682 - kirito.height + 2){
             cancelRequestAnimFrame(requestID);
             midJump = false;
-            startHeight = 384;
+            startHeight = 680;
 
         }
     }
