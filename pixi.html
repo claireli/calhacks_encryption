@@ -14,12 +14,12 @@
   		 <div align="center">
    		 	<canvas id="game-canvas" width="1000" height="680"></canvas>
  		 </div>
-<<<<<<< HEAD
-     <div id = "admin"><a href="admin_panel.html">admin panel </a> </div>
+     <div id = "admin"><a href="admin_panelb.html">admin panel </a> </div>
+     <div id = "decrypt"><a href="decryption_panel.html">decrypt panel</a> </div>
     <a href="10 - Millionaire.mp3">Play music 1</a>
     <a href="05 - Brush Your Hair.m4a">Play music 2</a>
 
-=======
+
      <audio src="10 - Millionaire.mp3" controls>  
         <embed 
         src="10 - Millionaire.mp3"
@@ -28,13 +28,13 @@
         loop="false"
         autostart="true" />
      </audio>
->>>>>>> 9dddd023c05a52f73941b9653a4a6a24bf6101b8
  		 <script src="pixi.js-master/bin/pixi.dev.js"></script>
  		  <script>
  		  var width = document.getElementById("game-canvas").width;
     		function init() 
     		{
           $("#admin").hide();
+          $("#decrypt").hide();
       			//console.log("init() successfully called.");
       			stage = new PIXI.Stage(0x66FF99);
       			renderer = PIXI.autoDetectRenderer
@@ -141,6 +141,9 @@
           // Figure out height of Santa
           var santaInd = tokens.indexOf("santa");
           var santaHeight = platHeightCpy - (heightInterval*santaInd);
+
+          var bucketInd = tokens.indexOf("bucket");
+          var bucketHeight = platHeightCpy - (heightInterval*bucketInd);
 
 
           // move the sprite to the bottom left
@@ -355,7 +358,7 @@
           {
             if (event.keyCode === 79 && ((kirito.position.y + kirito.height) - santaHeight) <= 4 && 
               ((kirito.position.y + kirito.height) - santaHeight) >= -4)
-{
+            {
                 $(document).ready(function(){
 
                 $(document).keydown(function(event){
@@ -367,9 +370,24 @@
                 });
               });
 
+
               //alert("Found Santa");
             }
 
+            if(event.keyCode === 79 && ((kirito.position.y + kirito.height) - bucketHeight) <= 4 && 
+              ((kirito.position.y + kirito.height) - bucketHeight) >= -4){
+
+               $(document).ready(function(){
+
+                $(document).keydown(function(event){
+                  if(event.which == 79){
+                    $("#decrypt").show();
+                    $("#decrypt").style.display = "inline-block";
+                  }
+                  //alert("found");
+                });
+              });
+            }
 
           }
 
